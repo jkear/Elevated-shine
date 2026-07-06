@@ -95,26 +95,15 @@
           </div>
           </sc-if>
 
-          <div style="display:flex;flex-direction:column;gap:7px;">
+          <div style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1;">
             <label style="font-size:13px;font-weight:600;color:#243B5C;">Which package?</label>
             <select value="{{ data.service }}" onChange="{{ on.service }}" style="{{ inputStyle }}" style-focus="{{ inputFocusStyle }}">
               <option value="">Pick a package…</option>
-              <option value="Essential Clean">Essential Clean</option>
-              <option value="Full Detail">Full Detail</option>
-              <option value="Showroom">Showroom</option>
+              <option value="Express Shine">Express Shine</option>
+              <option value="Elevated Detail">Elevated Detail</option>
+              <option value="Premium Care Service">Premium Care Service</option>
             </select>
             <sc-if value="{{ errors.service }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#C84A3E;">{{ errors.service }}</div></sc-if>
-          </div>
-
-          <div style="display:flex;flex-direction:column;gap:7px;">
-            <label style="font-size:13px;font-weight:600;color:#243B5C;">Vehicle size</label>
-            <select value="{{ data.vehicleSize }}" onChange="{{ on.vehicleSize }}" style="{{ inputStyle }}" style-focus="{{ inputFocusStyle }}">
-              <option value="">Choose…</option>
-              <option value="Sedan">Sedan</option>
-              <option value="SUV">SUV</option>
-              <option value="Truck">Truck</option>
-            </select>
-            <sc-if value="{{ errors.vehicleSize }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#C84A3E;">{{ errors.vehicleSize }}</div></sc-if>
           </div>
 
           <div style="display:flex;flex-direction:column;gap:7px;">
@@ -130,8 +119,10 @@
           </div>
 
           <div style="display:flex;flex-direction:column;gap:7px;">
-            <label style="font-size:13px;font-weight:600;color:#243B5C;">Vehicle <span style="color:#A6ADBA;font-weight:400;">(optional)</span></label>
+            <label style="font-size:13px;font-weight:600;color:#243B5C;">Vehicle <span style="color:#A6ADBA;font-weight:400;">(make &amp; model)</span></label>
             <input type="text" value="{{ data.vehicle }}" onInput="{{ on.vehicle }}" placeholder="2021 Lexus RX" style="{{ inputStyle }}" style-focus="{{ inputFocusStyle }}">
+            <sc-if value="{{ errors.vehicle }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#C84A3E;">{{ errors.vehicle }}</div></sc-if>
+            <div style="font-size:12px;color:#7A8392;">We use this to determine your vehicle's size class for pricing.</div>
           </div>
 
           <div style="display:flex;flex-direction:column;gap:7px;">
@@ -207,10 +198,10 @@ const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 class Component extends DCLogic {
   constructor(props){
     super(props);
-    this.fields = ['firstName','lastName','email','phone','county','service','vehicleSize','date','time','vehicle','notes','password'];
+    this.fields = ['firstName','lastName','email','phone','county','service','date','time','vehicle','notes','password'];
     this.state = {
       mode: 'account',
-      data: { firstName:'', lastName:'', email:'', phone:'', county:'', service:'', vehicleSize:'', date:'', time:'', vehicle:'', notes:'', password:'' },
+      data: { firstName:'', lastName:'', email:'', phone:'', county:'', service:'', date:'', time:'', vehicle:'', notes:'', password:'' },
       errors: {},
       confirmed: null,
       submitting: false,
@@ -254,7 +245,7 @@ class Component extends DCLogic {
     else if(d.phone.replace(/\D/g,'').length < 10) e.phone = 'Add a full phone number.';
     if(!d.county) e.county = 'Pick your county.';
     if(!d.service) e.service = 'Choose a package.';
-    if(!d.vehicleSize) e.vehicleSize = 'Pick a vehicle size.';
+    if(!d.vehicle.trim()) e.vehicle = 'What do you drive? Make & model, please.';
     if(!d.date) e.date = 'Pick a day.';
     else if(d.date < this.today()) e.date = 'Choose a future date.';
     if(!d.time) e.time = 'Morning or afternoon?';
@@ -292,8 +283,7 @@ class Component extends DCLogic {
         phone: d.phone,
         county: d.county,
         service: d.service,
-        vehicle_size: d.vehicleSize || null,
-        vehicle: d.vehicle || null,
+        vehicle: d.vehicle,
         date: d.date,
         time: d.time,
         notes: d.notes || null,
@@ -317,7 +307,7 @@ class Component extends DCLogic {
   }
 
   reset(){
-    this.setState({ mode:'account', data:{ firstName:'', lastName:'', email:'', phone:'', county:'', service:'', vehicleSize:'', date:'', time:'', vehicle:'', notes:'', password:'' }, errors:{}, confirmed:null, submitting:false, submitError:null });
+    this.setState({ mode:'account', data:{ firstName:'', lastName:'', email:'', phone:'', county:'', service:'', date:'', time:'', vehicle:'', notes:'', password:'' }, errors:{}, confirmed:null, submitting:false, submitError:null });
   }
 
   renderVals(){

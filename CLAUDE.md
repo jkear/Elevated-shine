@@ -33,3 +33,15 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 - [x] Confirm `bookings` table has all columns: `first_name`, `last_name`, `email`, `phone`, `county`, `service`, `vehicle`, `date`, `time`, `notes`, `mode`, `user_id`, `frame_id` — verified via migration `split_name_add_vehicle_size`
 - [x] Add `vehicle_size` column to `bookings` (Sedan / SUV / Truck, check-constrained) and a matching size selector in the form alongside the service dropdown
 - [x] Update the service dropdown options to match the 3 current tiers: Essential Clean, Full Detail, Showroom
+
+### Package restructure (2026-07-06)
+- [x] Tiers renamed: **Express Shine / Elevated Detail / Premium Care Service** (site cards + form dropdown)
+- [x] Pricing is by package + vehicle size only (no condition-based ranges). Size classes: **Compact / Mid-size / Large SUV & Truck**
+- [x] Size is determined by the business from the customer's vehicle make & model — the form has NO size dropdown; the Vehicle (make & model) field is required instead
+- [x] `bookings.vehicle_size` kept as internal, nullable, check-constrained to Compact / Mid-size / Large SUV/Truck (migration `vehicle_size_new_classes`)
+- [x] Add-ons added to site: Machine wax +$60, Ceramic seal +$120, Vinyl & leather repair from $75
+- `index.html` is a copy of `Mobile Detailing Site.dc.html` (Netlify entry point) — re-copy after editing the .dc.html
+
+### Deployment
+- GitHub repo: https://github.com/jkear/Elevated-shine.git — **push after every successful site test** (Netlify deploys from main once the project is linked)
+- Domain: elevatedshine.com (registered at Spaceship) → Netlify (setup in progress)
