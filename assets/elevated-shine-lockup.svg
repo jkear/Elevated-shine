@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 286" width="470" height="286">
+  
+  <g transform="translate(-110,-250)">
+    <path d="M250,327 C238,284 305,270 388,269 C470,268 522,280 540,296" fill="none" stroke="#3F73AD" stroke-width="4.5" stroke-linecap="round"></path>
+    <circle cx="541" cy="297" r="6" fill="#2B6FCE"></circle>
+    <path d="M150,380 L150,349 C150,339 158,333 175,330 C215,324 258,323 288,323 C302,309 332,305 358,306 C386,307 404,315 422,330 C444,347 462,353 476,356 C486,358 486,370 480,376 L480,380 Z" fill="#161B38"></path>
+    <polygon points="304,322 324,308 360,306 382,309 396,322" fill="#8E949C"></polygon>
+    <polygon points="304,322 324,308 357,306 332,322" fill="#B9BEC6"></polygon>
+    <rect x="205" y="350" width="42" height="9" rx="4.5" fill="#CDA163" transform="rotate(-3 226 354)"></rect>
+    <circle cx="218" cy="383" r="27" fill="#13183A"></circle><circle cx="218" cy="383" r="15" fill="#2C4A78"></circle><circle cx="218" cy="383" r="6.5" fill="#13183A"></circle><circle cx="218" cy="383" r="3" fill="#3B6FA8"></circle>
+    <circle cx="415" cy="383" r="27" fill="#13183A"></circle><circle cx="415" cy="383" r="15" fill="#2C4A78"></circle><circle cx="415" cy="383" r="6.5" fill="#13183A"></circle><circle cx="415" cy="383" r="3" fill="#3B6FA8"></circle>
+    <g fill="#CDA163">
+      <path transform="translate(432,285) scale(0.95)" d="M0,-20 C4,-4 4,-4 20,0 C4,4 4,4 0,20 C-4,4 -4,4 -20,0 C-4,-4 -4,-4 0,-20 Z"></path>
+      <path transform="translate(459,300) scale(0.5)" d="M0,-20 C4,-4 4,-4 20,0 C4,4 4,4 0,20 C-4,4 -4,4 -20,0 C-4,-4 -4,-4 0,-20 Z"></path>
+      <path transform="translate(414,272) scale(0.36)" d="M0,-20 C4,-4 4,-4 20,0 C4,4 4,4 0,20 C-4,4 -4,4 -20,0 C-4,-4 -4,-4 0,-20 Z"></path>
+    </g>
+    <g fill="#2B6FCE">
+      <path transform="translate(150,356) scale(0.72)" d="M0,-20 C4,-4 4,-4 20,0 C4,4 4,4 0,20 C-4,4 -4,4 -20,0 C-4,-4 -4,-4 0,-20 Z"></path>
+      <path transform="translate(548,360) scale(0.72)" d="M0,-20 C4,-4 4,-4 20,0 C4,4 4,4 0,20 C-4,4 -4,4 -20,0 C-4,-4 -4,-4 0,-20 Z"></path>
+    </g>
+  </g>
+
+  
+  <rect x="55" y="178" width="360" height="56" rx="13" fill="#1C3A5C"></rect>
+  <text x="235" y="216" text-anchor="middle" font-family="&#39;Arial Narrow&#39;,&#39;Arial&#39;,sans-serif" font-weight="700" font-size="35" letter-spacing="3" fill="#F3EFE3">ELEVATED SHINE</text>
+  <text x="235" y="262" text-anchor="middle" font-family="&#39;Arial Narrow&#39;,&#39;Arial&#39;,sans-serif" font-weight="700" font-size="26" letter-spacing="1.5" fill="#262C54">CAR WASH &amp; AUTO CARE</text>
+</svg>
