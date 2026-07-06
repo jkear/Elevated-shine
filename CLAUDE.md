@@ -42,6 +42,12 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 - [x] Add-ons added to site: Machine wax +$60, Ceramic seal +$120, Vinyl & leather repair from $75
 - `index.html` is a copy of `Mobile Detailing Site.dc.html` (Netlify entry point) — re-copy after editing the .dc.html
 
-### Deployment
-- GitHub repo: https://github.com/jkear/Elevated-shine.git — **push after every successful site test** (Netlify deploys from main once the project is linked)
-- Domain: elevatedshine.com (registered at Spaceship) → Netlify (setup in progress)
+### Deployment (live as of 2026-07-06)
+- GitHub repo: https://github.com/jkear/Elevated-shine.git — **push after every successful site test**; Netlify project `elevatedshine` auto-deploys from `main`
+- Live at https://elevatedshinedetail.com (the domain owned in Spaceship — NOT elevatedshine.com, which belongs to someone else) + www redirect + elevatedshine.netlify.app
+- DNS at Spaceship: A `@` → 75.2.60.5, CNAME `www` → elevatedshine.netlify.app
+- Entry point is `index.html` (copy of `Mobile Detailing Site.dc.html`) — re-copy after edits
+
+### Packages (2026-07-06)
+- Express Shine from $120 · Elevated Detail from $179 · Premium Care Service from $399 — single "starting at" price per package, final quote by vehicle size (Compact / Mid-size / Large SUV & Truck), size determined from customer's make & model
+- Premium includes DA-buffer work only: finishing polish, synthetic sealant + SiO₂ spray. **True ceramic coating is an add-on, from $750** (multi-year, incl. polish prep — priced vs Bender7 $700/3–5yr and Jax $980+)
