@@ -107,18 +107,6 @@
           </div>
 
           <div style="display:flex;flex-direction:column;gap:7px;">
-            <label style="font-size:13px;font-weight:600;color:#243B5C;">County</label>
-            <select value="{{ data.county }}" onChange="{{ on.county }}" style="{{ inputStyle }}" style-focus="{{ inputFocusStyle }}">
-              <option value="">Choose…</option>
-              <option value="Alachua">Alachua</option>
-              <option value="Marion">Marion</option>
-              <option value="Duval">Duval</option>
-              <option value="Clay">Clay</option>
-            </select>
-            <sc-if value="{{ errors.county }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#C84A3E;">{{ errors.county }}</div></sc-if>
-          </div>
-
-          <div style="display:flex;flex-direction:column;gap:7px;">
             <label style="font-size:13px;font-weight:600;color:#243B5C;">Vehicle <span style="color:#A6ADBA;font-weight:400;">(make &amp; model)</span></label>
             <input type="text" value="{{ data.vehicle }}" onInput="{{ on.vehicle }}" placeholder="2021 Lexus RX" style="{{ inputStyle }}" style-focus="{{ inputFocusStyle }}">
             <sc-if value="{{ errors.vehicle }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#C84A3E;">{{ errors.vehicle }}</div></sc-if>
@@ -173,10 +161,6 @@
             <span style="font-size:13.5px;color:#7A8392;">Package</span>
             <span style="font-size:13.5px;color:#142340;font-weight:600;text-align:right;">{{ conf.service }}</span>
           </div>
-          <div style="display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed rgba(20,35,64,0.14);">
-            <span style="font-size:13.5px;color:#7A8392;">Where</span>
-            <span style="font-size:13.5px;color:#142340;font-weight:600;">{{ conf.county }} County</span>
-          </div>
           <div style="display:flex;justify-content:space-between;gap:16px;padding:9px 0;">
             <span style="font-size:13.5px;color:#7A8392;">When</span>
             <span style="font-size:13.5px;color:#142340;font-weight:600;font-family:'JetBrains Mono',monospace;">{{ conf.date }} · {{ conf.time }}</span>
@@ -198,10 +182,10 @@ const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 class Component extends DCLogic {
   constructor(props){
     super(props);
-    this.fields = ['firstName','lastName','email','phone','county','service','date','time','vehicle','notes','password'];
+    this.fields = ['firstName','lastName','email','phone','service','date','time','vehicle','notes','password'];
     this.state = {
       mode: 'account',
-      data: { firstName:'', lastName:'', email:'', phone:'', county:'', service:'', date:'', time:'', vehicle:'', notes:'', password:'' },
+      data: { firstName:'', lastName:'', email:'', phone:'', service:'', date:'', time:'', vehicle:'', notes:'', password:'' },
       errors: {},
       confirmed: null,
       submitting: false,
@@ -243,8 +227,7 @@ class Component extends DCLogic {
     else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) e.email = 'That email looks off.';
     if(!d.phone.trim()) e.phone = 'A phone lets us text you.';
     else if(d.phone.replace(/\D/g,'').length < 10) e.phone = 'Add a full phone number.';
-    if(!d.county) e.county = 'Pick your county.';
-    if(!d.service) e.service = 'Choose a package.';
+        if(!d.service) e.service = 'Choose a package.';
     if(!d.vehicle.trim()) e.vehicle = 'What do you drive? Make & model, please.';
     if(!d.date) e.date = 'Pick a day.';
     else if(d.date < this.today()) e.date = 'Choose a future date.';
@@ -281,8 +264,7 @@ class Component extends DCLogic {
         last_name: d.lastName,
         email: d.email,
         phone: d.phone,
-        county: d.county,
-        service: d.service,
+                service: d.service,
         vehicle: d.vehicle,
         date: d.date,
         time: d.time,
@@ -307,7 +289,7 @@ class Component extends DCLogic {
   }
 
   reset(){
-    this.setState({ mode:'account', data:{ firstName:'', lastName:'', email:'', phone:'', county:'', service:'', date:'', time:'', vehicle:'', notes:'', password:'' }, errors:{}, confirmed:null, submitting:false, submitError:null });
+    this.setState({ mode:'account', data:{ firstName:'', lastName:'', email:'', phone:'', service:'', date:'', time:'', vehicle:'', notes:'', password:'' }, errors:{}, confirmed:null, submitting:false, submitError:null });
   }
 
   renderVals(){
