@@ -18,7 +18,6 @@
 
     <div style="background:{{ tint }};padding:28px 32px;border-bottom:1px solid rgba(20,35,64,0.06);position:relative;">
       <div style="font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:0.16em;text-transform:uppercase;color:#142340;font-weight:500;">Book your detail</div>
-      <p style="margin:8px 0 0;font-size:15px;color:#4A5260;max-width:46ch;line-height:1.5;">Tell us where you are and what your car needs. We'll text to confirm the time — no deposit to book.</p>
       <svg viewBox="0 0 120 120" width="84" height="84" style="position:absolute;right:22px;top:-6px;opacity:0.9;" aria-hidden="true">
         <circle cx="60" cy="60" r="30" fill="#FFFFFF" stroke="{{ tintStrong }}" stroke-width="4"></circle>
         <path d="M44 62 l10 10 22 -24" fill="none" stroke="{{ accent }}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -101,6 +100,23 @@
             <label style="font-size:13px;font-weight:600;color:#243B5C;">Preferred day</label>
             <input type="date" value="{{ data.date }}" onInput="{{ on.date }}" min="{{ today }}" style="{{ inputStyle }}" style-focus="{{ inputFocusStyle }}">
             <sc-if value="{{ errors.date }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#C84A3E;">{{ errors.date }}</div></sc-if>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1;">
+            <label style="font-size:13px;font-weight:600;color:#243B5C;">Add-ons <span style="color:#A6ADBA;font-weight:400;">(optional)</span></label>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:8px;">
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.lovebug }}" onChange="{{ tg.lovebug }}" style="{{ checkboxStyle }}"><span>Love bug removal</span><span style="{{ addonPriceStyle }}">+$25</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.engine }}" onChange="{{ tg.engine }}" style="{{ checkboxStyle }}"><span>Engine bay detail</span><span style="{{ addonPriceStyle }}">+$60</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.headlight }}" onChange="{{ tg.headlight }}" style="{{ checkboxStyle }}"><span>Headlight restoration</span><span style="{{ addonPriceStyle }}">+$85</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.pethair }}" onChange="{{ tg.pethair }}" style="{{ checkboxStyle }}"><span>Pet hair removal</span><span style="{{ addonPriceStyle }}">+$65</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.ozone }}" onChange="{{ tg.ozone }}" style="{{ checkboxStyle }}"><span>Ozone / odour treatment</span><span style="{{ addonPriceStyle }}">+$65</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.carpet }}" onChange="{{ tg.carpet }}" style="{{ checkboxStyle }}"><span>Carpet steam &amp; shampoo</span><span style="{{ addonPriceStyle }}">+$85</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.claybar }}" onChange="{{ tg.claybar }}" style="{{ checkboxStyle }}"><span>Clay bar treatment</span><span style="{{ addonPriceStyle }}">+$50</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.leather }}" onChange="{{ tg.leather }}" style="{{ checkboxStyle }}"><span>Leather conditioning</span><span style="{{ addonPriceStyle }}">+$50</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.wax }}" onChange="{{ tg.wax }}" style="{{ checkboxStyle }}"><span>Machine wax</span><span style="{{ addonPriceStyle }}">+$60</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.vinyl }}" onChange="{{ tg.vinyl }}" style="{{ checkboxStyle }}"><span>Vinyl &amp; leather repair</span><span style="{{ addonPriceStyle }}">from $75</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.ceramic }}" onChange="{{ tg.ceramic }}" style="{{ checkboxStyle }}"><span>Ceramic coating</span><span style="{{ addonPriceStyle }}">from $699</span></label>
+            </div>
           </div>
 
           <div style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1;">
@@ -247,9 +263,22 @@ class Component extends DCLogic {
   constructor(props){
     super(props);
     this.fields = ['firstName','lastName','email','phone','address','service','date','vehicle','notes'];
+    this.addonDefs = [
+      { key:'lovebug',   label:'Love bug removal',        price:'+$25' },
+      { key:'engine',    label:'Engine bay detail',       price:'+$60' },
+      { key:'headlight', label:'Headlight restoration',   price:'+$85' },
+      { key:'pethair',   label:'Pet hair removal',        price:'+$65' },
+      { key:'ozone',     label:'Ozone / odour treatment', price:'+$65' },
+      { key:'carpet',    label:'Carpet steam & shampoo',  price:'+$85' },
+      { key:'claybar',   label:'Clay bar treatment',      price:'+$50' },
+      { key:'leather',   label:'Leather conditioning',    price:'+$50' },
+      { key:'wax',       label:'Machine wax',             price:'+$60' },
+      { key:'vinyl',     label:'Vinyl & leather repair',  price:'from $75' },
+      { key:'ceramic',   label:'Ceramic coating',         price:'from $699' },
+    ];
     this.state = {
       mode: 'guest',
-      data: { firstName:'', lastName:'', email:'', phone:'', address:'', service:'', date:'', vehicle:'', notes:'' },
+      data: { firstName:'', lastName:'', email:'', phone:'', address:'', service:'', date:'', vehicle:'', notes:'', addons:{} },
       errors: {},
       confirmed: null,
       submitting: false,
@@ -278,6 +307,10 @@ class Component extends DCLogic {
   }
 
   today(){ const t = new Date(); t.setMinutes(t.getMinutes() - t.getTimezoneOffset()); return t.toISOString().slice(0,10); }
+
+  toggleAddon(k){
+    this.setState(s => ({ data: { ...s.data, addons: { ...s.data.addons, [k]: !s.data.addons[k] } } }));
+  }
 
   set(field, v){
     this.setState(s => ({ data: { ...s.data, [field]: v }, errors: { ...s.errors, [field]: undefined } }));
@@ -318,6 +351,7 @@ class Component extends DCLogic {
         phone: d.phone,
         address: d.address,
         service: d.service,
+        addons: (() => { const sel = this.addonDefs.filter(a => d.addons[a.key]).map(a => `${a.label} (${a.price})`); return sel.length ? sel : null; })(),
         vehicle: d.vehicle,
         date: d.date,
                 notes: d.notes || null,
@@ -341,7 +375,7 @@ class Component extends DCLogic {
   }
 
   reset(){
-    this.setState({ mode:'guest', data:{ firstName:'', lastName:'', email:'', phone:'', address:'', service:'', date:'', vehicle:'', notes:'' }, errors:{}, confirmed:null, submitting:false, submitError:null });
+    this.setState({ mode:'guest', data:{ firstName:'', lastName:'', email:'', phone:'', address:'', service:'', date:'', vehicle:'', notes:'', addons:{} }, errors:{}, confirmed:null, submitting:false, submitError:null });
   }
 
   renderVals(){
@@ -373,7 +407,17 @@ class Component extends DCLogic {
     const oauthUser = this.state.oauthUser;
     const isAccount = this.state.mode === 'account';
 
+    const addonItemStyle = { display:'flex', alignItems:'center', gap:'10px', padding:'10px 12px', border:'1px solid rgba(20,35,64,0.14)', borderRadius:'10px', background:'#FFFFFF', cursor:'pointer', fontSize:'14px', color:'#2A2F3A', boxSizing:'border-box' };
+    const addonPriceStyle = { fontFamily:"'JetBrains Mono',monospace", fontSize:'12.5px', color:'#3B6FA8', marginLeft:'auto', whiteSpace:'nowrap' };
+    const checkboxStyle = { width:'16px', height:'16px', accentColor: accent, flexShrink:0, margin:0 };
+    const ck = {}; const tg = {};
+    this.addonDefs.forEach(a => {
+      ck[a.key] = !!this.state.data.addons[a.key];
+      tg[a.key] = () => this.toggleAddon(a.key);
+    });
+
     return {
+      ck, tg, addonItemStyle, addonPriceStyle, checkboxStyle,
       data: this.state.data,
       errors: this.state.errors,
       on,
