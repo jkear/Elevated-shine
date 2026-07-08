@@ -12,7 +12,21 @@ Static HTML site for Elevated Shine mobile detailing. No build system. Files are
 
 Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 
+**NOTE (2026-07-08): `index.html` is the source of truth** — `Mobile Detailing Site.dc.html` had gone stale and was re-synced FROM index.html. Edit index.html, then `cp index.html "Mobile Detailing Site.dc.html"`.
+
 ---
+
+## Design critique fixes (2026-07-08) — done
+- Booking is now guest-first: password field + signUp removed; Google sign-in kept as optional email prefill. `mode` inserts as 'guest'.
+- Added required "Where's the car?" address field; `bookings.address` column added (migration `add_address_to_bookings`).
+- index.html: `<title>`, meta description, favicon, OG tags added; Newsreader font dropped; "Pick your shine" h2 added above packages; footer phone/email are now tel:/mailto: links; `#a-pricing` renamed `#a-addons`; muted gray #7A8392 → #5D6675 (contrast); mobile nav keeps Services link visible.
+- Hidden proof section (`#a-proof`, display:none) between add-ons and service area — placeholder photos (assets/work-1..3.jpg) and 3 review cards. Flip to display:block when real content exists.
+- Brand mismatch FIXED (2026-07-08): new badge logo says "MOBILE DETAILING & CARE". Hero uses `assets/ESDbadgeLOGO.svg` (bg rect stripped for transparency, PNG fallback), favicon is `assets/favicon.png`, OG image is `assets/ESDbadgeLOGO.png` (880px). Masters live in `uploads/`.
+
+## Booking notifications (2026-07-08)
+- Flow: form insert → `booking_notify` trigger (pg_net) → edge function `notify-booking` → Resend email to jordan@elevatedvector.com.
+- [ ] REMAINING: create free Resend account (resend.com), then Supabase dashboard → Edge Functions → notify-booking → Secrets: add `RESEND_API_KEY`. Until set, bookings still save but no email sends (function logs the failure).
+- Optional secrets: `BOOKING_NOTIFY_TO` (defaults jordan@elevatedvector.com), `BOOKING_NOTIFY_FROM` (defaults onboarding@resend.dev; verify elevatedvector.com in Resend to send from a branded address).
 
 ## Open todos
 

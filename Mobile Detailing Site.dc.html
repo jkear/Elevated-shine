@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevated Shine — Mobile Detailing in Gainesville &amp; North Florida</title>
+<meta name="description" content="Mobile auto detailing that comes to your driveway. Serving Alachua County &amp; North Florida. Packages from $120 — book online, no deposit required.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta property="og:title" content="Elevated Shine — Mobile Detailing &amp; Auto Care">
+<meta property="og:description" content="We bring the shine to your driveway. Mobile detailing serving Alachua County &amp; North Florida. No deposit to book.">
+<meta property="og:image" content="https://elevatedshinedetail.com/assets/ESDbadgeLOGO.png">
+<meta property="og:url" content="https://elevatedshinedetail.com">
+<meta property="og:type" content="website">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -10,137 +18,62 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   @keyframes nvd-bob { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
   @keyframes nvd-drift { 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(14px); } }
   @keyframes nvd-twinkle { 0%,100%{ opacity:.4; transform:scale(.85); } 50%{ opacity:1; transform:scale(1.1); } }
   @keyframes nvd-rise { 0%{ transform:translateY(0); opacity:.7; } 100%{ transform:translateY(-26px); opacity:0; } }
+  @media (max-width: 760px) {
+    .es-nav { padding: 14px 20px !important; }
+    .es-nav-links { gap: 14px !important; }
+    .es-nav-links a:not(:first-child):not(:last-child) { display: none !important; }
+    .es-nav-links a:first-child { font-size: 14px !important; }
+    .es-nav-links a:last-child { white-space: nowrap; padding: 9px 16px !important; font-size: 13px !important; }
+    .es-hero { padding: 36px 20px 32px !important; }
+    .es-grid-hero { grid-template-columns: 1fr !important; gap: 18px !important; }
+    .es-grid-hero h1 { font-size: 38px !important; }
+    .es-grid-hero h1 br { display: none; }
+    .es-grid-hero p { font-size: 16px !important; }
+    .es-grid-3, .es-grid-2, .es-grid-form { grid-template-columns: 1fr !important; }
+    #a-services, #a-addons, #a-area { padding: 44px 20px 16px !important; }
+    #a-book { padding: 36px 20px 48px !important; }
+    #a-addons > div { padding: 24px 18px !important; }
+    #a-services h2, #a-addons h2, #a-area h2 { font-size: 27px !important; }
+    .es-footer { padding: 36px 20px !important; }
+  }
 </style>
 </helmet>
 
 <div data-screen-label="Direction A" style="background:#FBF8F2;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(20,35,64,0.16);font-family:'Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;color:#2A2F3A;">
 
     <!-- NAV A -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 40px;background:rgba(251,248,242,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,35,64,0.06);">
+    <div class="es-nav" style="display:flex;align-items:center;justify-content:space-between;padding:20px 40px;background:rgba(251,248,242,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,35,64,0.06);">
       <div style="display:flex;align-items:center;gap:12px;">
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;color:#142340;letter-spacing:-0.01em;line-height:1.05;">Elevated Shine<br><span style="font-weight:500;font-size:11px;letter-spacing:0.14em;color:#3B6FA8;font-family:'JetBrains Mono',monospace;white-space:nowrap;">CAR WASH &amp; AUTO CARE</span></div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;color:#142340;letter-spacing:-0.01em;line-height:1.05;">Elevated Shine<br><span style="font-weight:500;font-size:11px;letter-spacing:0.14em;color:#3B6FA8;font-family:'JetBrains Mono',monospace;white-space:nowrap;">MOBILE DETAILING &amp; AUTO CARE</span></div>
       </div>
-      <div style="display:flex;align-items:center;gap:28px;">
+      <div class="es-nav-links" style="display:flex;align-items:center;gap:28px;">
         <a href="#a-services" style="font-size:15px;color:#2A2F3A;text-decoration:none;font-weight:500;">Services</a>
-        <a href="#a-pricing" style="font-size:15px;color:#2A2F3A;text-decoration:none;font-weight:500;">Add-ons</a>
+        <a href="#a-addons" style="font-size:15px;color:#2A2F3A;text-decoration:none;font-weight:500;">Add-ons</a>
         <a href="#a-area" style="font-size:15px;color:#2A2F3A;text-decoration:none;font-weight:500;">Service area</a>
         <a href="#a-book" style="display:inline-flex;align-items:center;padding:11px 22px;border-radius:999px;background:#3B6FA8;color:#fff;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 12px rgba(59,111,168,0.28);">Book a clean</a>
       </div>
     </div>
 
     <!-- HERO A -->
-    <div style="position:relative;background:linear-gradient(180deg,#EAF1F8 0%,#F3EFE8 100%);padding:56px 40px 40px;overflow:hidden;">
-      <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:center;position:relative;z-index:2;">
+    <div class="es-hero" style="position:relative;background:linear-gradient(180deg,#EAF1F8 0%,#F3EFE8 100%);padding:56px 40px 40px;overflow:hidden;">
+      <div class="es-grid-hero" style="display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:center;position:relative;z-index:2;">
         <div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:#FBE3DA;color:#A8503A;padding:7px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;">Mobile · we come to you</div>
-          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:54px;line-height:1.02;letter-spacing:-0.02em;color:#142340;margin:18px 0 0;">We bring the<br>shine to your<br>driveway.</h1>
-          <p style="font-size:18px;line-height:1.55;color:#4A5260;margin:20px 0 0;max-width:42ch;">Friendly, careful auto detailing across Alachua, Marion, Duval &amp; Clay counties. You stay put — we make your car look like the day you got it.</p>
+          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:54px;line-height:1.02;letter-spacing:-0.02em;color:#142340;margin:18px 0 0;">We bring the <br>shine to your <br>driveway.</h1>
+          <p style="font-size:18px;line-height:1.55;color:#4A5260;margin:20px 0 0;max-width:42ch;">Mobile auto detailing serving Alachua County and North Florida.</p>
           <div style="display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;">
             <a href="#a-book" style="display:inline-flex;align-items:center;gap:9px;padding:16px 30px;border-radius:999px;background:#3B6FA8;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;text-decoration:none;box-shadow:0 8px 22px rgba(59,111,168,0.32);">Book a clean →</a>
             <a href="#a-services" style="display:inline-flex;align-items:center;padding:16px 28px;border-radius:999px;background:transparent;border:1.5px solid rgba(20,35,64,0.22);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;text-decoration:none;">See packages</a>
           </div>
-          <div style="display:flex;align-items:center;gap:20px;margin-top:28px;font-size:13.5px;color:#7A8392;">
-            <span style="display:inline-flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:999px;background:#7FA294;display:inline-block;"></span>No deposit to book</span>
-            <span style="display:inline-flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:999px;background:#7FA294;display:inline-block;"></span>Same-week openings</span>
-          </div>
         </div>
 
         <div style="position:relative;">
-          <svg viewBox="0 0 560 400" style="width:100%;height:auto;display:block;" aria-hidden="true">
-            <ellipse cx="350" cy="360" rx="260" ry="38" fill="#BFD8C9" opacity="0.55"></ellipse>
-            <g style="animation:nvd-drift 9s ease-in-out infinite;">
-              <g fill="#FFFFFF"><circle cx="110" cy="92" r="26"></circle><circle cx="142" cy="86" r="20"></circle><circle cx="84" cy="98" r="18"></circle></g>
-            </g>
-            <g style="animation:nvd-drift 12s ease-in-out infinite reverse;">
-              <g fill="#FFFFFF" opacity="0.92"><circle cx="300" cy="58" r="18"></circle><circle cx="326" cy="54" r="14"></circle></g>
-            </g>
-            <g><circle cx="478" cy="74" r="40" fill="#F4C7A1"></circle>
-              <g stroke="#F4C7A1" stroke-width="7" stroke-linecap="round">
-                <line x1="478" y1="14" x2="478" y2="2"></line><line x1="538" y1="74" x2="552" y2="74"></line>
-                <line x1="520" y1="32" x2="530" y2="22"></line><line x1="520" y1="116" x2="530" y2="126"></line>
-                <line x1="436" y1="32" x2="426" y2="22"></line>
-              </g>
-            </g>
-            <g style="animation:nvd-bob 5s ease-in-out infinite;transform-origin:center;">
-              <!-- ground shadow -->
-              <ellipse cx="280" cy="352" rx="258" ry="20" fill="#142340" opacity="0.09"></ellipse>
-              <!-- ═══ BIG CAR ═══ -->
-              <path d="M22,298 L22,260 C22,244 40,234 72,230 C164,222 274,220 330,220 C356,198 400,190 436,192 C476,194 504,210 520,236 C532,250 530,264 524,278 L524,298 Z" fill="#161B38"></path>
-              <polygon points="336,220 364,202 408,198 442,204 474,220" fill="#8E949C"></polygon>
-              <polygon points="336,220 364,202 400,198 370,220" fill="#B9BEC6"></polygon>
-              <rect x="174" y="257" width="56" height="11" rx="5.5" fill="#CDA163" transform="rotate(-3 202 262)"></rect>
-              <circle cx="132" cy="324" r="40" fill="#13183A"></circle><circle cx="132" cy="324" r="23" fill="#2C4A78"></circle><circle cx="132" cy="324" r="9" fill="#13183A"></circle><circle cx="132" cy="324" r="4" fill="#3B6FA8"></circle>
-              <circle cx="440" cy="324" r="40" fill="#13183A"></circle><circle cx="440" cy="324" r="23" fill="#2C4A78"></circle><circle cx="440" cy="324" r="9" fill="#13183A"></circle><circle cx="440" cy="324" r="4" fill="#3B6FA8"></circle>
-              <!-- shine sparkles on car -->
-              <g fill="rgba(200,222,248,0.75)" stroke="rgba(100,140,210,0.28)" stroke-width="1.5">
-                <circle cx="360" cy="178" r="7"></circle><circle cx="390" cy="166" r="5"></circle><circle cx="420" cy="172" r="4"></circle>
-              </g>
-
-              <!-- ═══ GUY at car front, centered, slightly larger, rag in hand ═══ -->
-              <!-- shoes -->
-              <ellipse cx="262" cy="332" rx="15" ry="8" fill="#142340"></ellipse>
-              <ellipse cx="298" cy="332" rx="15" ry="8" fill="#142340"></ellipse>
-              <!-- pants -->
-              <rect x="252" y="282" width="22" height="52" rx="11" fill="#142340"></rect>
-              <rect x="286" y="282" width="22" height="52" rx="11" fill="#142340"></rect>
-              <!-- shirt (wide, stocky) -->
-              <rect x="236" y="212" width="88" height="76" rx="24" fill="#243B5C"></rect>
-              <!-- LEFT arm raised welcoming -->
-              <path d="M242,236 C226,228 212,218 202,210" fill="none" stroke="#243B5C" stroke-width="19" stroke-linecap="round"></path>
-              <path d="M202,210 C196,206 192,202 189,199" fill="none" stroke="#FAD4B0" stroke-width="17" stroke-linecap="round"></path>
-              <circle cx="183" cy="195" r="14" fill="#FAD4B0"></circle>
-              <!-- RIGHT arm down holding rag -->
-              <path d="M318,238 C336,246 350,258 357,270" fill="none" stroke="#243B5C" stroke-width="19" stroke-linecap="round"></path>
-              <path d="M357,270 C361,276 363,280 364,284" fill="none" stroke="#FAD4B0" stroke-width="17" stroke-linecap="round"></path>
-              <circle cx="366" cy="288" r="13" fill="#FAD4B0"></circle>
-              <!-- rag / cloth in hand -->
-              <path d="M346,282 Q366,274 388,282 Q384,300 380,314 Q372,306 364,316 Q356,306 348,316 Q344,300 346,282 Z" fill="#EFF3F8" stroke="#C8CCD1" stroke-width="2"></path>
-              <path d="M356,288 Q366,285 376,288" fill="none" stroke="#C8CCD1" stroke-width="1.5" stroke-linecap="round"></path>
-              <path d="M358,300 Q366,297 374,300" fill="none" stroke="#C8CCD1" stroke-width="1.5" stroke-linecap="round"></path>
-              <!-- ears -->
-              <circle cx="232" cy="186" r="15" fill="#FAD4B0"></circle><circle cx="232" cy="186" r="9" fill="#F2BAA8"></circle>
-              <circle cx="328" cy="186" r="15" fill="#FAD4B0"></circle><circle cx="328" cy="186" r="9" fill="#F2BAA8"></circle>
-              <!-- head -->
-              <circle cx="280" cy="178" r="54" fill="#FAD4B0"></circle>
-              <!-- hair -->
-              <path d="M226,150 Q230,108 280,106 Q330,108 334,150 Q318,134 280,132 Q242,134 226,150 Z" fill="#7B4A28"></path>
-              <!-- brows (raised — welcoming) -->
-              <path d="M254,148 Q266,140 278,144" fill="none" stroke="#4A2E10" stroke-width="4" stroke-linecap="round"></path>
-              <path d="M282,144 Q294,140 306,148" fill="none" stroke="#4A2E10" stroke-width="4" stroke-linecap="round"></path>
-              <!-- eyes -->
-              <circle cx="264" cy="166" r="9" fill="#2A3E50"></circle><circle cx="296" cy="166" r="9" fill="#2A3E50"></circle>
-              <circle cx="267" cy="163" r="3.5" fill="#FFFFFF"></circle><circle cx="299" cy="163" r="3.5" fill="#FFFFFF"></circle>
-              <!-- glasses (thick black Browline) -->
-              <rect x="249" y="155" width="30" height="22" rx="6" fill="rgba(160,200,230,0.18)" stroke="#1A1A1A" stroke-width="4.5"></rect>
-              <rect x="281" y="155" width="30" height="22" rx="6" fill="rgba(160,200,230,0.18)" stroke="#1A1A1A" stroke-width="4.5"></rect>
-              <rect x="249" y="153" width="30" height="8" rx="3" fill="#1A1A1A"></rect>
-              <rect x="281" y="153" width="30" height="8" rx="3" fill="#1A1A1A"></rect>
-              <line x1="279" y1="164" x2="281" y2="164" stroke="#1A1A1A" stroke-width="3.5"></line>
-              <line x1="249" y1="164" x2="238" y2="168" stroke="#1A1A1A" stroke-width="3"></line>
-              <line x1="311" y1="164" x2="322" y2="168" stroke="#1A1A1A" stroke-width="3"></line>
-              <!-- nose -->
-              <circle cx="280" cy="182" r="6" fill="#E8BF98"></circle>
-              <!-- big open happy mouth -->
-              <path d="M256,194 Q280,218 304,194 Z" fill="#2A1A0E"></path>
-              <path d="M259,196 Q280,214 301,196 Z" fill="#FFFFFF"></path>
-              <path d="M256,194 Q268,188 280,194 Q292,188 304,194" fill="none" stroke="#4A2E10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-              <!-- SHORT SPARSE BEARD -->
-              <path d="M226,178 Q222,194 226,206 Q240,220 280,222 Q320,220 334,206 Q338,194 334,178 Q318,184 280,186 Q242,184 226,178 Z" fill="#8B4A1C" opacity="0.88"></path>
-              <ellipse cx="242" cy="198" rx="7" ry="5" fill="#FAD4B0" opacity="0.45"></ellipse>
-              <ellipse cx="318" cy="198" rx="7" ry="5" fill="#FAD4B0" opacity="0.45"></ellipse>
-              <!-- mustache -->
-              <path d="M266,194 Q280,202 294,194" fill="#8B4A1C"></path>
-              <!-- sparkles -->
-              <path transform="translate(208,150) scale(0.72)" d="M0,-20 C4,-4 4,-4 20,0 C4,4 4,4 0,20 C-4,4 -4,4 -20,0 C-4,-4 -4,-4 0,-20 Z" fill="#D4A574"></path>
-              <path transform="translate(226,124) scale(0.48)" d="M0,-20 C4,-4 4,-4 20,0 C4,4 4,4 0,20 C-4,4 -4,4 -20,0 C-4,-4 -4,-4 0,-20 Z" fill="#D4A574"></path>
-              <path transform="translate(348,150) scale(0.4)" d="M0,-20 C4,-4 4,-4 20,0 C4,4 4,4 0,20 C-4,4 -4,4 -20,0 C-4,-4 -4,-4 0,-20 Z" fill="#2B6FCE"></path>
-          </svg>
+          <img src="assets/ESDbadgeLOGO.svg" alt="Elevated Shine — mobile detailing and care badge logo" style="width:100%;max-width:440px;height:auto;display:block;margin:0 auto;animation:nvd-bob 6s ease-in-out infinite;" onerror="this.onerror=null;this.src='assets/ESDbadgeLOGO.png';">
         </div>
       </div>
     </div>
@@ -148,34 +81,32 @@
     <!-- SERVICES A -->
     <div id="a-services" style="padding:64px 40px 24px;">
       <div style="text-align:center;max-width:600px;margin:0 auto;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#3B6FA8;font-weight:500;">What we do</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:38px;color:#142340;margin:10px 0 0;letter-spacing:-0.01em;">Three levels of care</h2>
-        <p style="font-size:16.5px;color:#4A5260;margin:12px 0 0;">Pricing is set by package and vehicle size. Tell us your make &amp; model when you book — we'll determine the size class and confirm your exact quote.</p>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:34px;color:#142340;margin:0;letter-spacing:-0.01em;">Pick your shine</h2>
+        <p style="font-size:16.5px;color:#4A5260;margin:12px 0 0;">Pricing is set by package and vehicle size. We'll confirm your exact quote.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;">
+      <div class="es-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;">
 
         <!-- TIER 1: Essential -->
         <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:24px;padding:28px;box-shadow:0 1px 2px rgba(20,35,64,0.06);display:flex;flex-direction:column;">
           <div style="width:52px;height:52px;border-radius:16px;background:#EAF1F8;display:flex;align-items:center;justify-content:center;font-size:26px;">🚿</div>
           <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;color:#142340;margin:16px 0 0;">Express Shine</h3>
-          <p style="font-size:14px;color:#4A5260;margin:7px 0 0;line-height:1.55;">A thorough reset for regular upkeep or a quick refresh before a trip.</p>
+          <p style="font-size:14px;color:#4A5260;margin:7px 0 0;line-height:1.55;">A thorough reset for regular upkeep.</p>
           <div style="margin:18px 0;flex:1;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#7A8392;margin-bottom:9px;">Includes</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5D6675;margin-bottom:9px;">Includes</div>
             <div style="display:flex;flex-direction:column;gap:7px;font-size:13.5px;color:#4A5260;">
-              <span>✓ Hand wash &amp; careful dry</span>
+              <span>✓ Hand wash &amp; dry</span>
               <span>✓ Full interior vacuum</span>
               <span>✓ Windows inside &amp; out</span>
               <span>✓ Tires cleaned &amp; dressed</span>
-              <span>✓ Dashboard &amp; console wipe-down</span>
+              <span>✓ Dashboard &amp; console cleaned</span>
             </div>
           </div>
           <div style="border-top:1px solid rgba(20,35,64,0.08);padding-top:18px;margin-top:auto;">
             <div style="text-align:center;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#7A8392;margin-bottom:5px;">Starting at</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#5D6675;margin-bottom:5px;">Starting at</div>
               <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#3B6FA8;font-weight:500;"><sc-if value="{{ pricesVisible }}" hint-placeholder-val="{{ true }}">$120</sc-if><sc-if value="{{ pricesHidden }}" hint-placeholder-val="{{ false }}">–</sc-if></div>
-              <div style="font-size:12px;color:#7A8392;margin-top:4px;">based on vehicle size</div>
             </div>
-            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;border:1.5px solid rgba(20,35,64,0.20);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;">Book this</a>
+            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;border:1.5px solid rgba(20,35,64,0.20);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;">Book</a>
           </div>
         </div>
 
@@ -200,9 +131,8 @@
             <div style="text-align:center;">
               <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#8492AD;margin-bottom:5px;">Starting at</div>
               <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#FBF8F2;font-weight:500;"><sc-if value="{{ pricesVisible }}" hint-placeholder-val="{{ true }}">$179</sc-if><sc-if value="{{ pricesHidden }}" hint-placeholder-val="{{ false }}">–</sc-if></div>
-              <div style="font-size:12px;color:#8492AD;margin-top:4px;">based on vehicle size</div>
             </div>
-            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;background:#3B6FA8;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 14px rgba(59,111,168,0.36);">Book this</a>
+            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;background:#3B6FA8;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 14px rgba(59,111,168,0.36);">Book</a>
           </div>
         </div>
 
@@ -212,11 +142,11 @@
           <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;color:#142340;margin:16px 0 0;">Premium Care Service</h3>
           <p style="font-size:14px;color:#4A5260;margin:7px 0 0;line-height:1.55;">Paint decontaminated and sealed for months. Just-bought clean, head to toe.</p>
           <div style="margin:18px 0;flex:1;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#7A8392;margin-bottom:9px;">Includes</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5D6675;margin-bottom:9px;">Includes</div>
             <div style="display:flex;flex-direction:column;gap:7px;font-size:13.5px;color:#4A5260;">
-              <span style="color:#7A8392;font-size:13px;">Everything in Elevated Detail, plus:</span>
+              <span style="color:#5D6675;font-size:13px;">Everything in Elevated Detail, plus:</span>
               <span>✓ Clay bar decontamination</span>
-              <span>✓ Machine finishing polish — haze &amp; light swirls</span>
+              <span>✓ Machine finishing polish — haze &amp; light swirl correction</span>
               <span>✓ Synthetic paint sealant + SiO₂ spray finish</span>
               <span>✓ UV trim &amp; plastic protection</span>
               <span>✓ Wheel deep-clean &amp; polish</span>
@@ -225,11 +155,10 @@
           </div>
           <div style="border-top:1px solid rgba(20,35,64,0.08);padding-top:18px;margin-top:auto;">
             <div style="text-align:center;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#7A8392;margin-bottom:5px;">Starting at</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#5D6675;margin-bottom:5px;">Starting at</div>
               <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#3B6FA8;font-weight:500;"><sc-if value="{{ pricesVisible }}" hint-placeholder-val="{{ true }}">$399</sc-if><sc-if value="{{ pricesHidden }}" hint-placeholder-val="{{ false }}">–</sc-if></div>
-              <div style="font-size:12px;color:#7A8392;margin-top:4px;">based on vehicle size</div>
             </div>
-            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;border:1.5px solid rgba(20,35,64,0.20);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;">Book this</a>
+            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;border:1.5px solid rgba(20,35,64,0.20);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;">Book</a>
           </div>
         </div>
 
@@ -237,108 +166,134 @@
     </div>
 
     <!-- ADD-ONS A -->
-    <div id="a-pricing" style="padding:56px 40px 24px;">
+    <div id="a-addons" style="padding:56px 40px 24px;">
       <div style="background:#EAF1F8;border-radius:28px;padding:40px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:28px;">
           <div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#3B6FA8;font-weight:500;">À la carte</div>
             <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:34px;color:#142340;margin:8px 0 0;letter-spacing:-0.01em;">Add-ons</h2>
           </div>
           <p style="font-size:14px;color:#4A5260;max-width:36ch;margin:0;">Tack any of these onto any package at booking. No hidden fees, ever.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+        <div class="es-grid-2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+          <div style="background:#FBE3DA;border:1px solid rgba(168,80,58,0.16);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div style="font-size:15px;color:#142340;font-weight:500;display:flex;align-items:center;gap:8px;">Love bug removal <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.1em;background:#A8503A;color:#fff;padding:2px 8px;border-radius:999px;">Seasonal</span></div>
+              <div style="font-size:13px;color:#5D6675;margin-top:3px;">Apr–May &amp; Aug–Sep · prevents paint etching</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#A8503A;font-weight:500;white-space:nowrap;margin-left:16px;">+$25</div>
+          </div>
           <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
               <div style="font-size:15px;color:#142340;font-weight:500;">Engine bay detail</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">Degreased, rinsed &amp; dressed</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Degreased, rinsed &amp; dressed</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">+$60</div>
           </div>
           <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
               <div style="font-size:15px;color:#142340;font-weight:500;">Headlight restoration</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">Both lenses, polished &amp; sealed</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Both lenses, polished &amp; sealed</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">+$85</div>
           </div>
           <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
               <div style="font-size:15px;color:#142340;font-weight:500;">Pet hair removal</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">Thorough extraction from seats &amp; carpet</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Thorough extraction from seats &amp; carpet</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">+$65</div>
           </div>
           <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
               <div style="font-size:15px;color:#142340;font-weight:500;">Ozone / odour treatment</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">Eliminates smoke, mildew &amp; pet odour</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Eliminates smoke, mildew &amp; pet odour</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">+$65</div>
           </div>
           <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
               <div style="font-size:15px;color:#142340;font-weight:500;">Carpet steam &amp; shampoo</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">Deep extraction across all floor areas</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Deep extraction across all floor areas</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">+$85</div>
           </div>
           <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
               <div style="font-size:15px;color:#142340;font-weight:500;">Clay bar treatment</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">Lifts bonded contaminants from paint</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Lifts bonded contaminants from paint</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">+$50</div>
           </div>
           <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
               <div style="font-size:15px;color:#142340;font-weight:500;">Leather conditioning</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">Cleans, feeds &amp; protects leather seats</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Cleans, feeds &amp; protects leather seats</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">+$50</div>
           </div>
           <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
               <div style="font-size:15px;color:#142340;font-weight:500;">Machine wax</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">Hand-finished shine, 1&ndash;3 months of protection</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Hand-finished shine, 1&ndash;3 months of protection</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">+$60</div>
           </div>
           <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
-              <div style="font-size:15px;color:#142340;font-weight:500;">Ceramic coating</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">True multi-year SiO₂ coating &middot; incl. polish prep</div>
-            </div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">from $750</div>
-          </div>
-          <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
-            <div>
               <div style="font-size:15px;color:#142340;font-weight:500;">Vinyl &amp; leather repair</div>
-              <div style="font-size:13px;color:#7A8392;margin-top:2px;">Tears, cracks &amp; scuffs &middot; quoted at booking</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Tears, cracks &amp; scuffs &middot; quoted at booking</div>
             </div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">from $75</div>
           </div>
-          <div style="background:#FBE3DA;border:1px solid rgba(168,80,58,0.16);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
+          <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px rgba(20,35,64,0.04);">
             <div>
-              <div style="font-size:15px;color:#142340;font-weight:500;display:flex;align-items:center;gap:8px;">Love bug removal <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.1em;background:#A8503A;color:#fff;padding:2px 8px;border-radius:999px;">Seasonal</span></div>
-              <div style="font-size:13px;color:#7A8392;margin-top:3px;">Apr–May &amp; Aug–Sep · prevents paint etching</div>
+              <div style="font-size:15px;color:#142340;font-weight:500;">Ceramic coating</div>
+              <div style="font-size:13px;color:#5D6675;margin-top:2px;">Price depends on process &amp; product</div>
             </div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#A8503A;font-weight:500;white-space:nowrap;margin-left:16px;">+$25</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#3B6FA8;font-weight:500;white-space:nowrap;margin-left:16px;">from $699</div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROOF: photos + reviews. Hidden until real content is ready.
+         To go live: change display:none to display:block below, swap the three
+         assets/work-*.jpg placeholders for real before/after photos, and paste
+         real Google review text + names over the placeholders. -->
+    <div id="a-proof" style="display:none;padding:56px 40px 24px;">
+      <div style="text-align:center;max-width:600px;margin:0 auto 36px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#3B6FA8;font-weight:500;">Our work</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:34px;color:#142340;margin:10px 0 0;letter-spacing:-0.01em;">See the shine for yourself</h2>
+      </div>
+      <div class="es-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <img src="assets/work-1.jpg" alt="Freshly detailed vehicle — exterior shine" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;border:1px solid rgba(20,35,64,0.10);">
+        <img src="assets/work-2.jpg" alt="Interior deep clean — before and after" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;border:1px solid rgba(20,35,64,0.10);">
+        <img src="assets/work-3.jpg" alt="Paint decontamination and sealant finish" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;border:1px solid rgba(20,35,64,0.10);">
+      </div>
+      <div class="es-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px;">
+        <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:20px;padding:24px;box-shadow:0 1px 2px rgba(20,35,64,0.06);">
+          <div style="color:#D4A574;font-size:16px;letter-spacing:2px;">★★★★★</div>
+          <p style="font-size:14.5px;color:#4A5260;line-height:1.6;margin:12px 0 0;">"[Placeholder review — paste a real Google review here.]"</p>
+          <div style="font-size:13px;color:#5D6675;margin-top:12px;font-weight:600;">— Customer name, Gainesville</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:20px;padding:24px;box-shadow:0 1px 2px rgba(20,35,64,0.06);">
+          <div style="color:#D4A574;font-size:16px;letter-spacing:2px;">★★★★★</div>
+          <p style="font-size:14.5px;color:#4A5260;line-height:1.6;margin:12px 0 0;">"[Placeholder review — paste a real Google review here.]"</p>
+          <div style="font-size:13px;color:#5D6675;margin-top:12px;font-weight:600;">— Customer name, Alachua</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:20px;padding:24px;box-shadow:0 1px 2px rgba(20,35,64,0.06);">
+          <div style="color:#D4A574;font-size:16px;letter-spacing:2px;">★★★★★</div>
+          <p style="font-size:14.5px;color:#4A5260;line-height:1.6;margin:12px 0 0;">"[Placeholder review — paste a real Google review here.]"</p>
+          <div style="font-size:13px;color:#5D6675;margin-top:12px;font-weight:600;">— Customer name, Newberry</div>
         </div>
       </div>
     </div>
 
     <!-- SERVICE AREA A -->
     <div id="a-area" style="padding:56px 40px 24px;text-align:center;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#3B6FA8;font-weight:500;">Where we go</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#3B6FA8;font-weight:500;">Service area</div>
       <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:34px;color:#142340;margin:10px 0 0;letter-spacing:-0.01em;">We come to you</h2>
-      <p style="font-size:16px;color:#4A5260;margin:12px auto 0;max-width:50ch;">Home, office, anywhere with a bit of room to work. We currently cover four counties:</p>
-      <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px;">
-        <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:18px;padding:18px 30px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;color:#142340;box-shadow:0 1px 2px rgba(20,35,64,0.06);">📍 Alachua</div>
-        <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:18px;padding:18px 30px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;color:#142340;box-shadow:0 1px 2px rgba(20,35,64,0.06);">📍 Marion</div>
-        <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:18px;padding:18px 30px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;color:#142340;box-shadow:0 1px 2px rgba(20,35,64,0.06);">📍 Duval</div>
-        <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.10);border-radius:18px;padding:18px 30px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;color:#142340;box-shadow:0 1px 2px rgba(20,35,64,0.06);">📍 Clay</div>
-      </div>
+      <p style="font-size:16px;color:#4A5260;margin:12px auto 0;max-width:50ch;">Home, office, anywhere with a bit of room to work. Serving Alachua County and North Florida.</p>
     </div>
 
     <!-- BOOK A -->
@@ -347,24 +302,24 @@
     </div>
 
     <!-- FOOTER A -->
-    <div style="background:#142340;color:#B7C2D6;padding:44px 40px;">
+    <div class="es-footer" style="background:#142340;color:#B7C2D6;padding:44px 40px;">
       <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;">
         <div style="max-width:34ch;">
           <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;color:#FBF8F2;">Elevated Shine</div>
-          <p style="font-size:14px;margin:10px 0 0;line-height:1.6;">Car wash &amp; auto care done with care. We bring the shine to your driveway.</p>
+          <p style="font-size:14px;margin:10px 0 0;line-height:1.6;">Mobile detailing done with care. We bring the shine to your driveway.</p>
         </div>
         <div style="font-size:14px;line-height:2;">
           <div style="color:#8492AD;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;">Get in touch</div>
-          <div style="font-family:'JetBrains Mono',monospace;color:#FBF8F2;">(352) 555-0142</div>
-          <div style="font-family:'JetBrains Mono',monospace;color:#FBF8F2;">hello@elevatedshine.com</div>
+          <div><a href="tel:+14074621661" style="font-family:'JetBrains Mono',monospace;color:#FBF8F2;text-decoration:none;">(407) 462-1661</a></div>
+          <div><a href="mailto:Jordan@elevatedvector.com" style="font-family:'JetBrains Mono',monospace;color:#FBF8F2;text-decoration:none;">Jordan@elevatedvector.com</a></div>
         </div>
         <div style="font-size:14px;line-height:2;">
           <div style="color:#8492AD;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;">Service area</div>
-          <div>Alachua · Marion</div>
-          <div>Duval · Clay</div>
+          <div>Alachua County</div>
+          <div>&amp; North Florida</div>
         </div>
       </div>
-      <div style="border-top:1px solid rgba(255,255,255,0.10);margin-top:28px;padding-top:18px;font-size:12.5px;color:#8492AD;">© 2026 Elevated Shine · Car wash &amp; auto care.</div>
+      <div style="border-top:1px solid rgba(255,255,255,0.10);margin-top:28px;padding-top:18px;font-size:12.5px;color:#8492AD;">© 2026 Elevated Shine · Mobile detailing &amp; auto care. Elevated Shine Detailers is a DBA of Elevated Vector Automation LLC.</div>
     </div>
 
   </div>
