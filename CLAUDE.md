@@ -23,6 +23,17 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 - Hidden proof section (`#a-proof`, display:none) between add-ons and service area — placeholder photos (assets/work-1..3.jpg) and 3 review cards. Flip to display:block when real content exists.
 - Brand mismatch FIXED (2026-07-08): new badge logo says "MOBILE DETAILING & CARE". Hero uses `assets/ESDbadgeLOGO.svg` (bg rect stripped for transparency, PNG fallback), favicon is `assets/favicon.png`, OG image is `assets/ESDbadgeLOGO.png` (880px). Masters live in `uploads/`.
 
+## Scheduling via Calendar.io (2026-07-13)
+- Calendar.io (Lovable app, backend `ecimiqyektudoggbkhge.supabase.co`) hosts availability. Account: jordan (/jordan).
+- 6 event types (all In person, 120 min shown, Mon–Sat, TZ America/New_York, 12h min notice, 60-day window). Longer services are modeled with after-buffers:
+  - `basic-detail-am` 05:00–09:00 (slots 5:00, 7:00 AM) · `basic-detail-evening` 18:00–22:00 (6:00, 8:00 PM) — buffer 0
+  - `elevated-detail-morning` 07:00–10:00 (7:00 AM) · `elevated-detail-evening` 18:00–20:00 (6:00 PM) — after-buffer 60 (3h block)
+  - `premium-detail-morning` 07:00–11:00 (7:00 AM) · `premium-detail-evening` 18:00–20:00 (6:00 PM) — after-buffer 120 (4h block)
+- Public API (no auth): `GET {fn}/get-availability?username=jordan&slug=X&date=YYYY-MM-DD&timezone=TZ` → `{slots:["HH:MM"]}`; `POST {fn}/create-booking {event_type_id, start_time, guest_name, guest_email}` — engine stores slot times as naive local-as-UTC, so send `start_time = "<date>T<slot>:00Z"`.
+- QUIRKS: (1) bookings only block their own event type — cross-service conflicts are enforced client-side in BookingForm via `get_booked_slots(p_date)` RPC on our own bookings table (security definer, returns time_slot+service only); (2) Calendar.io sends the CUSTOMER a confirmation email w/ .ics + cancel link (from onboarding@resend.dev until they configure a domain).
+- BookingForm.dc.html: service+date → slot buttons (merged AM/PM availability minus own-table conflicts); submit = create-booking on Calendar.io then insert into our `bookings` (incl. `time_slot`), which fires the owner notification.
+- `booking-notify` edge function v2 includes the time slot in subject and body (uses `time_slot`, falls back to `time`).
+
 ## Booking notifications (2026-07-08)
 - Flow: form insert → `booking_notify` trigger (pg_net) → edge function `notify-booking` → Resend email to jordan@elevatedvector.com.
 - [ ] REMAINING: create free Resend account (resend.com), then Supabase dashboard → Edge Functions → notify-booking → Secrets: add `RESEND_API_KEY`. Until set, bookings still save but no email sends (function logs the failure).
