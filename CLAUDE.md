@@ -34,10 +34,15 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 - BookingForm.dc.html: service+date → slot buttons (merged AM/PM availability minus own-table conflicts); submit = create-booking on Calendar.io then insert into our `bookings` (incl. `time_slot`), which fires the owner notification.
 - `booking-notify` edge function v2 includes the time slot in subject and body (uses `time_slot`, falls back to `time`).
 
-## Booking notifications (2026-07-08)
-- Flow: form insert → `booking_notify` trigger (pg_net) → edge function `notify-booking` → Resend email to jordan@elevatedvector.com.
-- [ ] REMAINING: create free Resend account (resend.com), then Supabase dashboard → Edge Functions → notify-booking → Secrets: add `RESEND_API_KEY`. Until set, bookings still save but no email sends (function logs the failure).
-- Optional secrets: `BOOKING_NOTIFY_TO` (defaults jordan@elevatedvector.com), `BOOKING_NOTIFY_FROM` (defaults onboarding@resend.dev; verify elevatedvector.com in Resend to send from a branded address).
+## Booking notifications (2026-07-08, updated 2026-07-15)
+- Flow: form insert → `booking_notify_trigger` (pg_net) → edge function **`booking-notify`** (the live one; `notify-booking` is an older orphan) → Resend email.
+- **v4 (2026-07-15): default recipient is now `jordan@upshinedetail.com`** (Spacemail mailbox on the new domain). Sender still `bookings@send.elevatedvector.com`.
+- Secrets: `RESEND_API_KEY` required. `BOOKING_NOTIFY_TO`/`BOOKING_NOTIFY_FROM` override the defaults — if `BOOKING_NOTIFY_TO` is set in the dashboard, it wins over the new default; keep it unset or set to jordan@upshinedetail.com.
+
+## upshinedetail.com (2026-07-15)
+- New domain purchased at Spaceship; added as a **domain alias** on Netlify (elevatedshinedetail.com stays primary for now). Long-term plan: rebrand to "Upshine Detailing" and flip primary.
+- Email: Spacemail (Spaceship's mail product) hosts jordan@upshinedetail.com — MX/SPF/DKIM records live at Spaceship DNS.
+- Footer contact email on the site changed to jordan@upshinedetail.com.
 
 ## Open todos
 
