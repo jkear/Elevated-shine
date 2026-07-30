@@ -1,0 +1,31 @@
+# Pings Supabase daily so the free-tier project never auto-pauses.
+# Auto-pause triggers after ~7 days of API inactivity; one lightweight
+# REST request a day is enough to count as activity.
+# NOTE: GitHub disables scheduled workflows in repos with no commits for
+# 60 days. If you get a "workflow disabled" email, one click re-enables it
+# (Actions tab), or just keep committing to the repo occasionally.
+name: Supabase keep-alive
+
+on:
+  schedule:
+    - cron: "17 11 * * *"   # daily 11:17 UTC (7:17am ET)
+  workflow_dispatch: {}
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST API
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            "https://hhdrqgkhpfmbujlnhtlm.supabase.co/rest/v1/")
+          echo "Supabase responded with HTTP $code"
+          case "$code" in
+            2*|3*|401|404) exit 0 ;;   # any live response = project is awake
+            *) echo "Project may be paused or unreachable"; exit 1 ;;
+          esac
+        env:
+          SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoZHJxZ2tocGZtYnVqbG5odGxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NjEyOTksImV4cCI6MjA5ODEzNzI5OX0.RwD226ULuyl1pfFxM_xQwSUsWug9SvhnkZiDtLhFotU
