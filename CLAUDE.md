@@ -37,6 +37,13 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
   - `bookings-ics` **v2**: PRODID/X-WR-CALNAME → "UpShine Detailing bookings", download filename → `upshine-bookings.ics`. Event UIDs **deliberately keep** `@elevatedshinedetail.com` — changing UIDs would duplicate every event in already-subscribed calendars.
   - `notify-booking` (v3) is still the old orphaned function — inactive in the flow, ignore or delete.
 
+## Pricing/tier restructure (2026-07-30)
+- Express Shine **$120** starting (was $99) · middle tier renamed **"Elevated UpShine"** (was "Elevated Detail") now **$199** starting (was $179).
+- **Premium Care Service is now a $200/mo membership**: one full detail per month + one **Emergency UpShine** call per month (buff a scuff, undo a spill, etc.). Card label reads "Membership / $200/mo" — no asterisk (flat price, not size-based).
+- BookingForm dropdown option value is now `Elevated UpShine` — inserts into `bookings.service` (no check constraint on that column, verified).
+- `bookings-ics` **v3**: duration map has both "Elevated UpShine": 3 and legacy "Elevated Detail": 3.
+- Supabase keep-alive: `.github/workflows/supabase-keepalive.yml` pings REST daily 11:17 UTC so free tier never auto-pauses. GitHub disables schedules after 60 days without commits — re-enable in Actions tab if emailed.
+
 ## Design critique fixes (2026-07-08) — done
 - Booking is now guest-first: password field + signUp removed; Google sign-in kept as optional email prefill. `mode` inserts as 'guest'.
 - Added required "Where's the car?" address field; `bookings.address` column added (migration `add_address_to_bookings`).
