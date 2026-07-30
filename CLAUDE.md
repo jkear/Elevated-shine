@@ -1,8 +1,14 @@
-# Elevated Shine — Project Notes for Claude
+# UpShine Detailing — Project Notes for Claude
+
+> **Rebranded 2026-07-25: "Elevated Shine" → "UpShine Detailing".** Historical notes below still
+> use the old name where they describe past work; treat "Elevated Shine" in those entries as
+> history, not current branding. Current brand is **UpShine Detailing**, tagline
+> **CLEAN · CORRECT · PROTECT**. The parent entity is still **Elevated Vector Automation LLC**
+> (do not rename), and the package tier **"Elevated Detail"** was deliberately kept.
 
 ## What this project is
 
-Static HTML site for Elevated Shine mobile detailing. No build system. Files are plain `.html` using a custom "Design Components" (DC) React runtime via `support.js`. Deployed on Netlify at `elevatedshinedetail.com`.
+Static HTML site for UpShine Detailing mobile detailing. No build system. Files are plain `.html` using a custom "Design Components" (DC) React runtime via `support.js`. Deployed on Netlify — currently `elevatedshinedetail.com` is still the Netlify primary domain, but all in-page canonical/OG URLs now point at `upshinedetail.com`.
 
 **Key files:**
 - `Mobile Detailing Site.dc.html` — main landing page
@@ -16,6 +22,21 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 
 ---
 
+## Rebrand: Elevated Shine → UpShine Detailing (2026-07-25)
+- Source art: `7-24-upshineLogo.svg` in repo root (an SVG wrapper around a 1024px transparent PNG; `.xcf` masters alongside it). Badge reads **UPSHINE / DETAILING** with an arc of **CLEAN • CORRECT • PROTECT**.
+- New assets generated from it (auto-cropped to the badge bbox + 12px pad):
+  - `assets/UpShineBadge.png` — 1040×918 transparent, used in the hero (`<img>`, no SVG fallback needed since the source is raster anyway)
+  - `assets/UpShineBadge-og.png` — 1200×630, badge centered on brand cream `#FBF8F2`, used for `og:image`
+  - `assets/upshine-favicon.png` — 256×256 transparent
+- index.html changes: `<title>`, `og:title`, `og:image`, `og:url`, favicon link, nav wordmark ("UpShine" + `CLEAN · CORRECT · PROTECT` subtitle, replacing "MOBILE DETAILING & AUTO CARE"), hero `<img>` + alt text, footer brand block, copyright line.
+- Canonical/OG URLs now point at **upshinedetail.com**. Netlify primary domain is still elevatedshinedetail.com — **flip primary in Netlify** to finish the move.
+- **Deliberately NOT renamed:** the package tier `Elevated Detail` (site cards + BookingForm dropdown) and the legal entity `Elevated Vector Automation LLC`. The DBA line now reads "UpShine Detailing is a DBA of Elevated Vector Automation LLC."
+- Old assets left in place but now unused: `ESDbadgeLOGO.svg/.png`, `favicon.png`, `real-logo-favicon.*`, `logo-favicon.*`, `mark-suds-sparkle*.svg`.
+- Supabase side (2026-07-26, project was found paused and restored by owner):
+  - `booking-notify` **v5**: email sender name → "UpShine Detailing Bookings" (NOTIFY_FROM address unchanged — `bookings@send.elevatedvector.com` is the verified Resend domain).
+  - `bookings-ics` **v2**: PRODID/X-WR-CALNAME → "UpShine Detailing bookings", download filename → `upshine-bookings.ics`. Event UIDs **deliberately keep** `@elevatedshinedetail.com` — changing UIDs would duplicate every event in already-subscribed calendars.
+  - `notify-booking` (v3) is still the old orphaned function — inactive in the flow, ignore or delete.
+
 ## Design critique fixes (2026-07-08) — done
 - Booking is now guest-first: password field + signUp removed; Google sign-in kept as optional email prefill. `mode` inserts as 'guest'.
 - Added required "Where's the car?" address field; `bookings.address` column added (migration `add_address_to_bookings`).
@@ -23,7 +44,13 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 - Hidden proof section (`#a-proof`, display:none) between add-ons and service area — placeholder photos (assets/work-1..3.jpg) and 3 review cards. Flip to display:block when real content exists.
 - Brand mismatch FIXED (2026-07-08): new badge logo says "MOBILE DETAILING & CARE". Hero uses `assets/ESDbadgeLOGO.svg` (bg rect stripped for transparency, PNG fallback), favicon is `assets/favicon.png`, OG image is `assets/ESDbadgeLOGO.png` (880px). Masters live in `uploads/`.
 
-## Scheduling via Calendar.io (2026-07-13)
+## Quote-request form (2026-07-18) — replaces Calendar.io booking
+- BookingForm.dc.html is now a **quote request form**: no prices anywhere, no live time slots, no Calendar.io calls. Fields: name, phone, email, address, package, vehicle, preferred day + "Preferred time of day" (No preference/Morning/Evening → stored in `bookings.time_slot`), add-ons (labels only), notes.
+- Submit inserts straight into `bookings` (fires booking-notify email to jordan@upshinedetail.com). `get_booked_slots` RPC and Calendar.io event types are now unused/orphaned.
+- Copy: header "Request a quote", submit "Request my quote", confirmation "Quote request sent!" — owner texts back with quote + time.
+- Spacemail calendar is CalDAV-only (caldav.spacemail.com), no public API — owner schedules manually in Spacemail.
+
+## Scheduling via Calendar.io (2026-07-13) — RETIRED 2026-07-18, see above
 - Calendar.io (Lovable app, backend `ecimiqyektudoggbkhge.supabase.co`) hosts availability. Account: jordan (/jordan).
 - 6 event types (all In person, 120 min shown, Mon–Sat, TZ America/New_York, 12h min notice, 60-day window). Longer services are modeled with after-buffers:
   - `basic-detail-am` 05:00–09:00 (slots 5:00, 7:00 AM) · `basic-detail-evening` 18:00–22:00 (6:00, 8:00 PM) — buffer 0

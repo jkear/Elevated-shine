@@ -17,7 +17,7 @@
   <div style="background:#FFFFFF;border:1px solid rgba(20,35,64,0.12);border-radius:28px;box-shadow:0 18px 48px rgba(20,35,64,0.14),0 4px 12px rgba(20,35,64,0.06);overflow:hidden;">
 
     <div style="background:{{ tint }};padding:28px 32px;border-bottom:1px solid rgba(20,35,64,0.06);position:relative;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:0.16em;text-transform:uppercase;color:#142340;font-weight:500;">Book your detail</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:0.16em;text-transform:uppercase;color:#142340;font-weight:500;">Request a quote</div>
       <svg viewBox="0 0 120 120" width="84" height="84" style="position:absolute;right:22px;top:-6px;opacity:0.9;" aria-hidden="true">
         <circle cx="60" cy="60" r="30" fill="#FFFFFF" stroke="{{ tintStrong }}" stroke-width="4"></circle>
         <path d="M44 62 l10 10 22 -24" fill="none" stroke="{{ accent }}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -86,43 +86,25 @@
           </div>
 
           <div style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1;">
-            <label style="font-size:13px;font-weight:600;color:#243B5C;">Preferred time</label>
-            <sc-if value="{{ slotsIdle }}" hint-placeholder-val="{{ true }}">
-              <div style="font-size:13.5px;color:#A6ADBA;padding:10px 2px;">Pick a package and a day first — we'll show what's open.</div>
-            </sc-if>
-            <sc-if value="{{ slotsLoading }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size:13.5px;color:#5D6675;padding:10px 2px;">Checking available times…</div>
-            </sc-if>
-            <sc-if value="{{ slotsReady }}" hint-placeholder-val="{{ false }}">
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;">
-                <sc-for list="{{ slotOptions }}" as="slot">
-                  <button type="button" onClick="{{ slot.pick }}" style="{{ slot.style }}">{{ slot.label }}</button>
-                </sc-for>
-              </div>
-            </sc-if>
-            <sc-if value="{{ slotsEmpty }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size:13.5px;color:#C87F3E;background:#FDF7F0;border:1px solid rgba(200,127,62,0.25);border-radius:10px;padding:10px 12px;">That day is fully booked — try another date.</div>
-            </sc-if>
-            <sc-if value="{{ slotsError }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size:13.5px;color:#C84A3E;">Couldn't load times — check your connection and re-pick the date.</div>
-            </sc-if>
-            <sc-if value="{{ errors.timeSlot }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#C84A3E;">{{ errors.timeSlot }}</div></sc-if>
+            <label style="font-size:13px;font-weight:600;color:#243B5C;">Preferred time of day</label>
+            <select value="{{ data.timePref }}" onChange="{{ on.timePref }}" style="{{ inputStyle }}" style-focus="{{ inputFocusStyle }}">
+              <option value="">No preference</option>
+              <option value="Morning">Morning</option>
+              <option value="Evening">Evening</option>
+            </select>
           </div>
 
           <div style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1;">
             <label style="font-size:13px;font-weight:600;color:#243B5C;">Add-ons <span style="color:#A6ADBA;font-weight:400;">(optional)</span></label>
             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:8px;">
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.lovebug }}" onChange="{{ tg.lovebug }}" style="{{ checkboxStyle }}"><span>Love bug removal</span><span style="{{ addonPriceStyle }}">+$25</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.engine }}" onChange="{{ tg.engine }}" style="{{ checkboxStyle }}"><span>Engine bay detail</span><span style="{{ addonPriceStyle }}">+$60</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.headlight }}" onChange="{{ tg.headlight }}" style="{{ checkboxStyle }}"><span>Headlight restoration</span><span style="{{ addonPriceStyle }}">+$85</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.pethair }}" onChange="{{ tg.pethair }}" style="{{ checkboxStyle }}"><span>Pet hair removal</span><span style="{{ addonPriceStyle }}">+$65</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.ozone }}" onChange="{{ tg.ozone }}" style="{{ checkboxStyle }}"><span>Ozone / odour treatment</span><span style="{{ addonPriceStyle }}">+$65</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.carpet }}" onChange="{{ tg.carpet }}" style="{{ checkboxStyle }}"><span>Carpet steam &amp; shampoo</span><span style="{{ addonPriceStyle }}">+$85</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.claybar }}" onChange="{{ tg.claybar }}" style="{{ checkboxStyle }}"><span>Clay bar treatment</span><span style="{{ addonPriceStyle }}">+$50</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.leather }}" onChange="{{ tg.leather }}" style="{{ checkboxStyle }}"><span>Leather conditioning</span><span style="{{ addonPriceStyle }}">+$50</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.wax }}" onChange="{{ tg.wax }}" style="{{ checkboxStyle }}"><span>Machine wax</span><span style="{{ addonPriceStyle }}">+$60</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.vinyl }}" onChange="{{ tg.vinyl }}" style="{{ checkboxStyle }}"><span>Vinyl &amp; leather repair</span><span style="{{ addonPriceStyle }}">from $75</span></label>
-              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.ceramic }}" onChange="{{ tg.ceramic }}" style="{{ checkboxStyle }}"><span>Ceramic coating</span><span style="{{ addonPriceStyle }}">from $699</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.pethair }}" onChange="{{ tg.pethair }}" style="{{ checkboxStyle }}"><span>Pet hair removal</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.headlight }}" onChange="{{ tg.headlight }}" style="{{ checkboxStyle }}"><span>Headlight restoration</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.vinyl }}" onChange="{{ tg.vinyl }}" style="{{ checkboxStyle }}"><span>Vinyl &amp; leather repair</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.ozone }}" onChange="{{ tg.ozone }}" style="{{ checkboxStyle }}"><span>Ozone / odour treatment</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.engine }}" onChange="{{ tg.engine }}" style="{{ checkboxStyle }}"><span>Engine bay detail</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.claybar }}" onChange="{{ tg.claybar }}" style="{{ checkboxStyle }}"><span>Clay bar treatment</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.wax }}" onChange="{{ tg.wax }}" style="{{ checkboxStyle }}"><span>Machine wax</span></label>
+              <label style="{{ addonItemStyle }}"><input type="checkbox" checked="{{ ck.ceramic }}" onChange="{{ tg.ceramic }}" style="{{ checkboxStyle }}"><span>Ceramic coating</span></label>
             </div>
           </div>
 
@@ -236,12 +218,12 @@
               <rect x="24" y="10" width="252" height="78" rx="16" fill="#FFFFFF" stroke="#142340" stroke-width="2.5"></rect>
               <polygon points="216,86 248,86 262,126" fill="#FFFFFF" stroke="#142340" stroke-width="2.5" stroke-linejoin="round"></polygon>
               <rect x="220" y="82" width="26" height="7" fill="#FFFFFF"></rect>
-              <text x="150" y="42" text-anchor="middle" font-family="'Bricolage Grotesque',sans-serif" font-weight="600" font-size="21" fill="#142340">Thanks for booking!</text>
-              <text x="150" y="70" text-anchor="middle" font-family="'Hanken Grotesk',sans-serif" font-weight="500" font-size="16" fill="#4A5260">We appreciate your business!</text>
+              <text x="150" y="42" text-anchor="middle" font-family="'Bricolage Grotesque',sans-serif" font-weight="600" font-size="21" fill="#142340">Request received!</text>
+              <text x="150" y="70" text-anchor="middle" font-family="'Hanken Grotesk',sans-serif" font-weight="500" font-size="16" fill="#4A5260">We'll be in touch shortly!</text>
             </g>
           </svg>
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:28px;color:#142340;margin-top:18px;letter-spacing:-0.01em;">You're booked!</div>
-        <p style="margin:10px auto 0;font-size:15.5px;color:#4A5260;max-width:42ch;line-height:1.55;">Thanks, {{ conf.firstName }}. We'll text you to lock in the exact window — usually within the hour.</p>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:28px;color:#142340;margin-top:18px;letter-spacing:-0.01em;">Quote request sent!</div>
+        <p style="margin:10px auto 0;font-size:15.5px;color:#4A5260;max-width:42ch;line-height:1.55;">Thanks, {{ conf.firstName }}. We'll text you with your quote and to lock in a time — usually within the hour.</p>
 
         <div style="background:#FBF8F2;border:1px solid rgba(20,35,64,0.10);border-radius:20px;padding:22px;margin:24px auto 0;max-width:420px;text-align:left;">
           <div style="display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed rgba(20,35,64,0.14);">
@@ -249,12 +231,12 @@
             <span style="font-size:13.5px;color:#142340;font-weight:600;text-align:right;">{{ conf.service }}</span>
           </div>
           <div style="display:flex;justify-content:space-between;gap:16px;padding:9px 0;">
-            <span style="font-size:13.5px;color:#5D6675;">When</span>
-            <span style="font-size:13.5px;color:#142340;font-weight:600;font-family:'JetBrains Mono',monospace;">{{ conf.date }} · {{ conf.timeSlotLabel }}</span>
+            <span style="font-size:13.5px;color:#5D6675;">Preferred day</span>
+            <span style="font-size:13.5px;color:#142340;font-weight:600;font-family:'JetBrains Mono',monospace;">{{ conf.date }}{{ conf.timePrefLabel }}</span>
           </div>
         </div>
 
-        <button type="button" onClick="{{ reset }}" style="margin-top:22px;background:transparent;border:none;color:{{ accent }};font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">Book another car</button>
+        <button type="button" onClick="{{ reset }}" style="margin-top:22px;background:transparent;border:none;color:{{ accent }};font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">Request another quote</button>
       </div>
       </sc-if>
 
@@ -263,131 +245,31 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:520,&quot;height&quot;:760},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#3B6FA8&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accentHover&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2D578A&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tint&quot;:{&quot;editor&quot;:null,&quot;default&quot;:&quot;rgba(59,111,168,0.10)&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tintStrong&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#A7C7E7&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;frameId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
-// Calendar.io (scheduling backend) — public guest endpoints
-const CAL_FN_URL = 'https://ecimiqyektudoggbkhge.supabase.co/functions/v1';
-const CAL_USERNAME = 'jordan';
-const CAL_TZ = 'America/New_York';
-// Each site package maps to a morning + evening Calendar.io event type
-const CAL_EVENTS = {
-  'Express Shine': {
-    durationMin: 120,
-    types: [
-      { slug: 'basic-detail-am',        id: '6ebd47dc-691a-4582-b78d-1609ac9468c4' },
-      { slug: 'basic-detail-evening',   id: 'c94b7d4c-3f16-47e6-b4fc-2a99965379a8' },
-    ],
-  },
-  'Elevated Detail': {
-    durationMin: 180, // 120 booked + 60 buffer
-    types: [
-      { slug: 'elevated-detail-morning', id: '76c72d18-fe1c-446e-a254-61fb31192aa4' },
-      { slug: 'elevated-detail-evening', id: 'b06021da-b8e4-4b97-8f2d-3f7bd79cefb6' },
-    ],
-  },
-  'Premium Care Service': {
-    durationMin: 240, // 120 booked + 120 buffer
-    types: [
-      { slug: 'premium-detail-morning', id: 'aaf42136-ae03-4e04-8250-ae88bd98300f' },
-      { slug: 'premium-detail-evening', id: 'b2b90d8c-8162-45c3-9c73-5f10f08c72f4' },
-    ],
-  },
-};
-
 const SUPABASE_URL = 'https://hhdrqgkhpfmbujlnhtlm.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoZHJxZ2tocGZtYnVqbG5odGxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NjEyOTksImV4cCI6MjA5ODEzNzI5OX0.RwD226ULuyl1pfFxM_xQwSUsWug9SvhnkZiDtLhFotU';
 
 class Component extends DCLogic {
   constructor(props){
     super(props);
-    this.fields = ['firstName','lastName','email','phone','address','service','date','vehicle','notes'];
+    this.fields = ['firstName','lastName','email','phone','address','service','date','timePref','vehicle','notes'];
     this.addonDefs = [
-      { key:'lovebug',   label:'Love bug removal',        price:'+$25' },
-      { key:'engine',    label:'Engine bay detail',       price:'+$60' },
-      { key:'headlight', label:'Headlight restoration',   price:'+$85' },
-      { key:'pethair',   label:'Pet hair removal',        price:'+$65' },
-      { key:'ozone',     label:'Ozone / odour treatment', price:'+$65' },
-      { key:'carpet',    label:'Carpet steam & shampoo',  price:'+$85' },
-      { key:'claybar',   label:'Clay bar treatment',      price:'+$50' },
-      { key:'leather',   label:'Leather conditioning',    price:'+$50' },
-      { key:'wax',       label:'Machine wax',             price:'+$60' },
-      { key:'vinyl',     label:'Vinyl & leather repair',  price:'from $75' },
-      { key:'ceramic',   label:'Ceramic coating',         price:'from $699' },
+      { key:'pethair',   label:'Pet hair removal' },
+      { key:'headlight', label:'Headlight restoration' },
+      { key:'vinyl',     label:'Vinyl & leather repair' },
+      { key:'ozone',     label:'Ozone / odour treatment' },
+      { key:'engine',    label:'Engine bay detail' },
+      { key:'claybar',   label:'Clay bar treatment' },
+      { key:'wax',       label:'Machine wax' },
+      { key:'ceramic',   label:'Ceramic coating' },
     ];
     this.state = {
       mode: 'guest',
-      data: { firstName:'', lastName:'', email:'', phone:'', address:'', service:'', date:'', vehicle:'', notes:'', addons:{}, timeSlot:null },
+      data: { firstName:'', lastName:'', email:'', phone:'', address:'', service:'', date:'', timePref:'', vehicle:'', notes:'', addons:{} },
       errors: {},
       confirmed: null,
       submitting: false,
       submitError: null,
-      slots: { status:'idle', options: [] }, // idle | loading | ready | empty | error
     };
-    this._slotReq = 0;
-  }
-
-  // ---- Availability (Calendar.io + own bookings table) ----
-
-  slotLabel(t){
-    const [h, m] = t.split(':').map(Number);
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    const h12 = h % 12 === 0 ? 12 : h % 12;
-    return `${h12}:${String(m).padStart(2,'0')} ${ampm}`;
-  }
-
-  toMin(t){ const [h, m] = t.split(':').map(Number); return h * 60 + m; }
-
-  serviceDuration(service){
-    return (CAL_EVENTS[service] && CAL_EVENTS[service].durationMin) || 120;
-  }
-
-  async refreshSlots(){
-    const { service, date } = this.state.data;
-    const cfg = CAL_EVENTS[service];
-    if (!cfg || !date || date < this.today()) {
-      this.setState({ slots: { status:'idle', options: [] } });
-      return;
-    }
-    const reqId = ++this._slotReq;
-    this.setState({ slots: { status:'loading', options: [] } });
-    try {
-      // 1. Open slots for this package (morning + evening event types)
-      const availPromises = cfg.types.map(t =>
-        fetch(`${CAL_FN_URL}/get-availability?username=${CAL_USERNAME}&slug=${t.slug}&date=${date}&timezone=${encodeURIComponent(CAL_TZ)}`, { cache:'no-store' })
-          .then(r => { if (!r.ok) throw new Error('availability fetch failed'); return r.json(); })
-          .then(j => (j.slots || []).map(time => ({ time, eventTypeId: t.id, slug: t.slug })))
-      );
-      // 2. Slots already taken by ANY package that day (from our own bookings table)
-      const bookedPromise = this.getSupabase().rpc('get_booked_slots', { p_date: date }).then(({ data, error }) => {
-        if (error) throw error;
-        return (data || []).map(b => ({
-          start: this.toMin(b.time_slot),
-          end: this.toMin(b.time_slot) + this.serviceDuration(b.service),
-        }));
-      });
-      const [availLists, booked] = await Promise.all([Promise.all(availPromises), bookedPromise]);
-      if (reqId !== this._slotReq) return; // stale response
-      const durNew = this.serviceDuration(service);
-      const options = availLists.flat()
-        .filter(s => {
-          const st = this.toMin(s.time);
-          return !booked.some(b => st < b.end && b.start < st + durNew);
-        })
-        .sort((a, b) => this.toMin(a.time) - this.toMin(b.time));
-      this.setState(prev => ({
-        slots: { status: options.length ? 'ready' : 'empty', options },
-        data: { ...prev.data, timeSlot: null },
-      }));
-    } catch (err) {
-      if (reqId !== this._slotReq) return;
-      console.error('refreshSlots', err);
-      this.setState({ slots: { status:'error', options: [] } });
-    }
-  }
-
-  pickSlot(opt){
-    this.setState(s => ({
-      data: { ...s.data, timeSlot: opt },
-      errors: { ...s.errors, timeSlot: undefined },
-    }));
   }
 
   getSupabase() {
@@ -405,7 +287,6 @@ class Component extends DCLogic {
 
   set(field, v){
     this.setState(s => ({ data: { ...s.data, [field]: v }, errors: { ...s.errors, [field]: undefined } }));
-    if (field === 'service' || field === 'date') setTimeout(() => this.refreshSlots(), 0);
   }
 
   validate(){
@@ -421,7 +302,6 @@ class Component extends DCLogic {
     if(!d.vehicle.trim()) e.vehicle = 'What do you drive? Make & model, please.';
     if(!d.date) e.date = 'Pick a day.';
     else if(d.date < this.today()) e.date = 'Choose a future date.';
-    if(d.service && d.date && !d.timeSlot) e.timeSlot = 'Pick a time.';
     return e;
   }
 
@@ -437,31 +317,7 @@ class Component extends DCLogic {
     try {
       const sb = this.getSupabase();
 
-      // 1. Reserve the slot in Calendar.io (re-checks availability server-side,
-      //    so two customers can't grab the same window).
-      const slot = d.timeSlot;
-      const calRes = await fetch(`${CAL_FN_URL}/create-booking`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          event_type_id: slot.eventTypeId,
-          // The availability engine stores slot times as naive local-time-as-UTC,
-          // so send the slot exactly as returned by get-availability.
-          start_time: `${d.date}T${slot.time}:00Z`,
-          guest_name: `${d.firstName} ${d.lastName}`.trim(),
-          guest_email: d.email,
-          timezone: CAL_TZ,
-          guest_timezone: CAL_TZ,
-          topic: `${d.service} — ${d.vehicle}`,
-        }),
-      });
-      const calData = await calRes.json().catch(() => ({}));
-      if (!calRes.ok || calData.error) {
-        await this.refreshSlots();
-        throw new Error('That time was just taken — please pick another slot.');
-      }
-
-      // 2. Record the booking in our own table (fires the owner notification email).
+      // Record the quote request (fires the owner notification email).
       const { error: dbErr } = await sb.from('bookings').insert({
         first_name: d.firstName,
         last_name: d.lastName,
@@ -469,10 +325,10 @@ class Component extends DCLogic {
         phone: d.phone,
         address: d.address,
         service: d.service,
-        addons: (() => { const sel = this.addonDefs.filter(a => d.addons[a.key]).map(a => `${a.label} (${a.price})`); return sel.length ? sel : null; })(),
+        addons: (() => { const sel = this.addonDefs.filter(a => d.addons[a.key]).map(a => a.label); return sel.length ? sel : null; })(),
         vehicle: d.vehicle,
         date: d.date,
-        time_slot: slot.time,
+        time_slot: d.timePref || null,
         notes: d.notes || null,
         mode: this.state.mode,
         user_id: userId,
@@ -480,14 +336,14 @@ class Component extends DCLogic {
       });
       if (dbErr) throw dbErr;
 
-      this.setState({ confirmed: { ...d, timeSlotLabel: this.slotLabel(slot.time) }, submitting: false });
+      this.setState({ confirmed: { ...d, timePrefLabel: d.timePref ? ` · ${d.timePref}` : '' }, submitting: false });
     } catch(err) {
       this.setState({ submitting: false, submitError: err.message || 'Something went wrong. Please try again.' });
     }
   }
 
   reset(){
-    this.setState({ mode:'guest', data:{ firstName:'', lastName:'', email:'', phone:'', address:'', service:'', date:'', vehicle:'', notes:'', addons:{}, timeSlot:null }, errors:{}, confirmed:null, submitting:false, submitError:null, slots:{ status:'idle', options: [] } });
+    this.setState({ mode:'guest', data:{ firstName:'', lastName:'', email:'', phone:'', address:'', service:'', date:'', timePref:'', vehicle:'', notes:'', addons:{} }, errors:{}, confirmed:null, submitting:false, submitError:null });
   }
 
   renderVals(){
@@ -517,7 +373,6 @@ class Component extends DCLogic {
     const isAccount = this.state.mode === 'account';
 
     const addonItemStyle = { display:'flex', alignItems:'center', gap:'10px', padding:'10px 12px', border:'1px solid rgba(20,35,64,0.14)', borderRadius:'10px', background:'#FFFFFF', cursor:'pointer', fontSize:'14px', color:'#2A2F3A', boxSizing:'border-box' };
-    const addonPriceStyle = { fontFamily:"'JetBrains Mono',monospace", fontSize:'12.5px', color:'#3B6FA8', marginLeft:'auto', whiteSpace:'nowrap' };
     const checkboxStyle = { width:'16px', height:'16px', accentColor: accent, flexShrink:0, margin:0 };
     const ck = {}; const tg = {};
     this.addonDefs.forEach(a => {
@@ -525,25 +380,8 @@ class Component extends DCLogic {
       tg[a.key] = () => this.toggleAddon(a.key);
     });
 
-    const slots = this.state.slots;
-    const selectedTime = this.state.data.timeSlot?.time;
-    const slotBtnBase = { minHeight:'44px', padding:'10px 12px', borderRadius:'10px', cursor:'pointer', fontFamily:"'JetBrains Mono',monospace", fontSize:'14px', fontWeight:500, transition:'all 140ms', boxSizing:'border-box' };
-    const slotOptions = slots.options.map(o => ({
-      label: this.slotLabel(o.time),
-      pick: () => this.pickSlot(o),
-      style: o.time === selectedTime
-        ? { ...slotBtnBase, background: accent, color:'#FFFFFF', border:`1px solid ${accent}`, boxShadow:'0 4px 12px rgba(59,111,168,0.30)' }
-        : { ...slotBtnBase, background:'#FFFFFF', color:'#142340', border:'1px solid rgba(20,35,64,0.16)' },
-    }));
-
     return {
-      slotOptions,
-      slotsIdle: slots.status === 'idle',
-      slotsLoading: slots.status === 'loading',
-      slotsReady: slots.status === 'ready',
-      slotsEmpty: slots.status === 'empty',
-      slotsError: slots.status === 'error',
-      ck, tg, addonItemStyle, addonPriceStyle, checkboxStyle,
+      ck, tg, addonItemStyle, checkboxStyle,
       data: this.state.data,
       errors: this.state.errors,
       on,
@@ -555,7 +393,7 @@ class Component extends DCLogic {
       accent, tint, tintStrong,
       submitting,
       submitError: this.state.submitError,
-      submitLabel: submitting ? 'Booking…' : 'Book my detail',
+      submitLabel: submitting ? 'Sending…' : 'Request my quote',
       setAccount: () => this.setState({ mode:'account' }),
       setGuest: () => this.setState({ mode:'guest' }),
       submit: (ev) => this.submit(ev),

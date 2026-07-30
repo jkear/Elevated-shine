@@ -2,3 +2,5 @@
 .thumbnail
 .claude/
 uploads/
+*.dmg
+.DS_Store
