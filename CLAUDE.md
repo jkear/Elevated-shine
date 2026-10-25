@@ -44,6 +44,13 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 - `bookings-ics` **v3**: duration map has both "Elevated UpShine": 3 and legacy "Elevated Detail": 3.
 - Supabase keep-alive: `.github/workflows/supabase-keepalive.yml` pings REST daily 11:17 UTC so free tier never auto-pauses. GitHub disables schedules after 60 days without commits — re-enable in Actions tab if emailed.
 
+## Quote language + price update (2026-10-25)
+- All CTAs on index.html now say **"Request a quote"** (nav, hero, all 3 package cards) — no "Book" language left on the page. og:description says "Request a quote online — no deposit required."
+- Prices: **Interior Detail $189*** (was $120) · **Elevated UpShine $275*** (was $199, full interior + exterior) · Premium Care membership unchanged at $200/mo. Meta description now "Packages from $189".
+- BookingForm: helper text under "Preferred time of day" says preferred day/time aren't a confirmed appointment; confirmation copy says the time isn't reserved until we confirm by text.
+- Mobile nav: tighter wordmark/button at ≤760px; Services link hidden at ≤380px so the longer button fits.
+- Unused `p1s…p3t` price props in the dc-script still hold old placeholder values — they are not rendered; prices are hardcoded in the cards.
+
 ## Design critique fixes (2026-07-08) — done
 - Booking is now guest-first: password field + signUp removed; Google sign-in kept as optional email prefill. `mode` inserts as 'guest'.
 - Added required "Where's the car?" address field; `bookings.address` column added (migration `add_address_to_bookings`).

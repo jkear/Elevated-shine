@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UpShine Detailing — Mobile Detailing in Gainesville &amp; North Florida</title>
-<meta name="description" content="Mobile auto detailing that comes to your driveway. Serving Alachua County &amp; North Florida. Packages from $120 — request a quote online, no deposit required.">
+<meta name="description" content="Mobile auto detailing that comes to your driveway. Serving Alachua County &amp; North Florida. Packages from $189 — request a quote online, no deposit required.">
 <link rel="icon" type="image/png" href="assets/upshine-favicon.png">
 <meta property="og:title" content="UpShine Detailing — Clean · Correct · Protect">
-<meta property="og:description" content="We bring the shine to your driveway. Mobile detailing serving Alachua County &amp; North Florida. No deposit to book.">
+<meta property="og:description" content="We bring the shine to your driveway. Mobile detailing serving Alachua County &amp; North Florida. Request a quote online — no deposit required.">
 <meta property="og:image" content="https://upshinedetail.com/assets/UpShineBadge-og.png">
 <meta property="og:url" content="https://upshinedetail.com">
 <meta property="og:type" content="website">
@@ -25,11 +25,13 @@
   @keyframes nvd-twinkle { 0%,100%{ opacity:.4; transform:scale(.85); } 50%{ opacity:1; transform:scale(1.1); } }
   @keyframes nvd-rise { 0%{ transform:translateY(0); opacity:.7; } 100%{ transform:translateY(-26px); opacity:0; } }
   @media (max-width: 760px) {
-    .es-nav { padding: 14px 20px !important; }
-    .es-nav-links { gap: 14px !important; }
+    .es-nav { padding: 14px 16px !important; gap: 10px; }
+    .es-nav-links { gap: 12px !important; }
     .es-nav-links a:not(:first-child):not(:last-child) { display: none !important; }
     .es-nav-links a:first-child { font-size: 14px !important; }
-    .es-nav-links a:last-child { white-space: nowrap; padding: 9px 16px !important; font-size: 13px !important; }
+    .es-nav-links a:last-child { white-space: nowrap; padding: 8px 13px !important; font-size: 12.5px !important; }
+    .es-nav > div:first-child > div { font-size: 17px !important; }
+    .es-nav > div:first-child span { font-size: 9px !important; letter-spacing: 0.08em !important; }
     .es-hero { padding: 36px 20px 32px !important; }
     .es-grid-hero { grid-template-columns: 1fr !important; gap: 18px !important; }
     .es-grid-hero h1 { font-size: 38px !important; }
@@ -41,6 +43,9 @@
     #a-addons > div { padding: 24px 18px !important; }
     #a-services h2, #a-addons h2, #a-area h2 { font-size: 27px !important; }
     .es-footer { padding: 36px 20px !important; }
+  }
+  @media (max-width: 380px) {
+    .es-nav-links a:first-child { display: none !important; }
   }
 </style>
 </helmet>
@@ -56,7 +61,7 @@
         <a href="#a-services" style="font-size:15px;color:#2A2F3A;text-decoration:none;font-weight:500;">Services</a>
         <a href="#a-addons" style="font-size:15px;color:#2A2F3A;text-decoration:none;font-weight:500;">Add-ons</a>
         <a href="#a-area" style="font-size:15px;color:#2A2F3A;text-decoration:none;font-weight:500;">Service area</a>
-        <a href="#a-book" style="display:inline-flex;align-items:center;padding:11px 22px;border-radius:999px;background:#3B6FA8;color:#fff;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 12px rgba(59,111,168,0.28);">Book a clean</a>
+        <a href="#a-book" style="display:inline-flex;align-items:center;padding:11px 22px;border-radius:999px;background:#3B6FA8;color:#fff;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 12px rgba(59,111,168,0.28);">Request a quote</a>
       </div>
     </div>
 
@@ -67,7 +72,7 @@
           <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:54px;line-height:1.02;letter-spacing:-0.02em;color:#142340;margin:18px 0 0;">We bring the shine <br>to your driveway.</h1>
           <p style="font-size:18px;line-height:1.55;color:#4A5260;margin:20px 0 0;max-width:42ch;">Mobile auto detailing serving Alachua and surrounding counties.</p>
           <div style="display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;">
-            <a href="#a-book" style="display:inline-flex;align-items:center;gap:9px;padding:16px 30px;border-radius:999px;background:#3B6FA8;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;text-decoration:none;box-shadow:0 8px 22px rgba(59,111,168,0.32);">Book a clean →</a>
+            <a href="#a-book" style="display:inline-flex;align-items:center;gap:9px;padding:16px 30px;border-radius:999px;background:#3B6FA8;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;text-decoration:none;box-shadow:0 8px 22px rgba(59,111,168,0.32);">Request a quote →</a>
             <a href="#a-services" style="display:inline-flex;align-items:center;padding:16px 28px;border-radius:999px;background:transparent;border:1.5px solid rgba(20,35,64,0.22);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;text-decoration:none;">See packages</a>
           </div>
         </div>
@@ -105,9 +110,9 @@
           <div style="border-top:1px solid rgba(20,35,64,0.08);padding-top:18px;margin-top:auto;">
             <div style="text-align:center;">
               <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#5D6675;margin-bottom:5px;">Starting at</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#3B6FA8;font-weight:500;"><sc-if value="{{ pricesVisible }}" hint-placeholder-val="{{ true }}">$120*</sc-if><sc-if value="{{ pricesHidden }}" hint-placeholder-val="{{ false }}">–</sc-if></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#3B6FA8;font-weight:500;"><sc-if value="{{ pricesVisible }}" hint-placeholder-val="{{ true }}">$189*</sc-if><sc-if value="{{ pricesHidden }}" hint-placeholder-val="{{ false }}">–</sc-if></div>
             </div>
-            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;border:1.5px solid rgba(20,35,64,0.20);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;">Book</a>
+            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;border:1.5px solid rgba(20,35,64,0.20);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;">Request a quote</a>
           </div>
         </div>
 
@@ -133,9 +138,9 @@
           <div style="border-top:1px solid rgba(255,255,255,0.10);padding-top:18px;margin-top:auto;">
             <div style="text-align:center;">
               <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#8492AD;margin-bottom:5px;">Starting at</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#FBF8F2;font-weight:500;"><sc-if value="{{ pricesVisible }}" hint-placeholder-val="{{ true }}">$199*</sc-if><sc-if value="{{ pricesHidden }}" hint-placeholder-val="{{ false }}">–</sc-if></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#FBF8F2;font-weight:500;"><sc-if value="{{ pricesVisible }}" hint-placeholder-val="{{ true }}">$275*</sc-if><sc-if value="{{ pricesHidden }}" hint-placeholder-val="{{ false }}">–</sc-if></div>
             </div>
-            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;background:#3B6FA8;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 14px rgba(59,111,168,0.36);">Book</a>
+            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;background:#3B6FA8;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 14px rgba(59,111,168,0.36);">Request a quote</a>
           </div>
         </div>
 
@@ -157,7 +162,7 @@
               <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#5D6675;margin-bottom:5px;">Membership</div>
               <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#3B6FA8;font-weight:500;"><sc-if value="{{ pricesVisible }}" hint-placeholder-val="{{ true }}">$200/mo</sc-if><sc-if value="{{ pricesHidden }}" hint-placeholder-val="{{ false }}">–</sc-if></div>
             </div>
-            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;border:1.5px solid rgba(20,35,64,0.20);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;">Book</a>
+            <a href="#a-book" style="display:block;text-align:center;margin-top:14px;padding:11px 0;border-radius:999px;border:1.5px solid rgba(20,35,64,0.20);color:#142340;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;text-decoration:none;">Request a quote</a>
           </div>
         </div>
 
@@ -266,7 +271,7 @@
       <p style="font-size:16px;color:#4A5260;margin:12px auto 0;max-width:50ch;">Home, office, anywhere with a bit of room to work. Serving Alachua and surrounding counties.</p>
     </div>
 
-    <!-- BOOK A -->
+    <!-- QUOTE REQUEST A -->
     <div id="a-book" style="padding:48px 40px 64px;">
       <dc-import name="BookingForm" accent="{{ accent }}" accent-hover="{{ accentHover }}" tint="#FBE3DA" tint-strong="#F4C7A1" frame-id="a-sunny" hint-size="100%,820px"></dc-import>
     </div>
