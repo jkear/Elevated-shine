@@ -122,3 +122,8 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 ### Packages (2026-07-06)
 - Express Shine from $120 · Elevated Detail from $179 · Premium Care Service from $399 — single "starting at" price per package, final quote by vehicle size (Compact / Mid-size / Large SUV & Truck), size determined from customer's make & model
 - Premium includes DA-buffer work only: finishing polish, synthetic sealant + SiO₂ spray. **True ceramic coating is an add-on, from $750** (multi-year, incl. polish prep — priced vs Bender7 $700/3–5yr and Jax $980+)
+
+## Drop-off location (2026-11-13)
+- Customers can now drop cars off at **1801 NE 23rd Ave, Unit B-9, Gainesville, FL 32609** (verified as NE 23rd *Ave* via county parcel record).
+- Low-key placement only, no banner: one line under the Service area blurb (`#a-area`) and a "Drop-off" column in the footer. Both link to Google Maps.
+- No form/schema change: drop-off customers type "drop-off" in the required "Where's the car?" field (copy tells them to).
