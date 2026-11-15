@@ -1,0 +1,9 @@
+# The site is built from app/ (Vite + React + Astryx). Netlify runs the build
+# and publishes app/dist. The old root index.html is no longer the entry point.
+[build]
+  base = "app"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

@@ -1,0 +1,90 @@
+{
+  "name": "upshine",
+  "like": "neutral",
+  "mode": "both",
+  "settings": [
+    {
+      "thing": "accent",
+      "value": "#3B6FA8",
+      "source": "dial"
+    },
+    {
+      "thing": "neutral",
+      "value": "#142340",
+      "source": "dial"
+    },
+    {
+      "thing": "font",
+      "value": "'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif",
+      "source": "dial",
+      "on": "body"
+    },
+    {
+      "thing": "font",
+      "value": "'Bricolage Grotesque', 'Hanken Grotesk', sans-serif",
+      "source": "dial",
+      "on": "heading"
+    },
+    {
+      "thing": "font",
+      "value": "'JetBrains Mono', ui-monospace, monospace",
+      "source": "dial",
+      "on": "code"
+    },
+    {
+      "thing": "headings",
+      "value": "semibold",
+      "source": "dial",
+      "axis": "weight"
+    },
+    {
+      "thing": "headings",
+      "value": "tight",
+      "source": "dial",
+      "axis": "tracking"
+    },
+    {
+      "thing": "corners",
+      "value": "round",
+      "source": "dial"
+    },
+    {
+      "thing": "corners",
+      "value": "pill",
+      "source": "dial",
+      "on": "button"
+    },
+    {
+      "thing": "--color-background-body",
+      "value": "#FBF8F2",
+      "source": "token",
+      "mode": "light"
+    },
+    {
+      "thing": "--color-background-body",
+      "value": "#142340",
+      "source": "token",
+      "mode": "dark"
+    },
+    {
+      "thing": "--color-background-surface",
+      "value": "#142340",
+      "source": "token",
+      "mode": "dark"
+    },
+    {
+      "thing": "--color-background-card",
+      "value": "#142340",
+      "source": "token",
+      "mode": "dark"
+    },
+    {
+      "thing": "--color-background-muted",
+      "value": "#142340",
+      "source": "token",
+      "mode": "dark"
+    }
+  ],
+  "lifted": [],
+  "palette": "eab09316c7e467690a1b046cd25aa229ce5fa0de32c0e2e6e543c3bb337bc301"
+}

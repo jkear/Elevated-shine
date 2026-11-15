@@ -1,0 +1,15 @@
+/* Motion carried over from the original site: the hero badge bob and the
+   confirmation mascot's cloud drift. Everything else is styled by Astryx. */
+@keyframes nvd-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+@keyframes nvd-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(14px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+}
+html { scroll-behavior: smooth; }
+[id^='a-'] { scroll-margin-top: var(--spacing-10); }
