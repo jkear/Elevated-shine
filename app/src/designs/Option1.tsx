@@ -35,7 +35,7 @@ const QuoteForm = lazy(() => import('../QuoteForm'));
 
 const theme = themes[defaultThemeSlug];
 
-const TIER_ICONS = [SwatchIcon, SparklesIcon, ShieldCheckIcon];
+const TIER_ICONS = [SparklesIcon, SwatchIcon, ShieldCheckIcon];
 
 // The badge logo is used exactly as supplied; only its gentle bob is applied here.
 const badge: CSSProperties = {
@@ -73,7 +73,7 @@ function TierCard({tier, index}: {tier: Tier; index: number}) {
               <ListItem
                 key={line.label}
                 label={<Text>{line.label}</Text>}
-                description={line.note}
+                description={line.note && <Text type="supporting">{line.note}</Text>}
                 startContent={<Icon icon={CheckIcon} size="sm" color="accent" />}
               />
             ))}

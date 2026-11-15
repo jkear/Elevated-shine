@@ -6,6 +6,17 @@
 > **CLEAN · CORRECT · PROTECT**. The parent entity is still **Elevated Vector Automation LLC**
 > (do not rename), and the package tier **"Elevated Detail"** was deliberately kept.
 
+## Astryx redesign (2026-11-15) — READ FIRST, supersedes the static-HTML notes below
+- **The live site is now built from `app/`** (Vite + React 19 + TypeScript + Astryx design system). `netlify.toml` sets base `app`, command `npm run build`, publish `dist`. Netlify now runs a real build on every push to `main`.
+- **The root `index.html`, `Mobile Detailing Site.dc.html`, `BookingForm.dc.html` and `support.js` are legacy** — no longer published. Do not edit them to change the site.
+- **Edit copy/prices/phone/packages in `app/src/content.ts`** (tiers, add-ons, phone, email, drop-off). Package order there drives both the pricing section and the form dropdown.
+- Designs: `app/src/designs/Option2.tsx` is live (navy hero band, one-package-at-a-time switcher, add-on tiles, contact list beside the form). `Option1.tsx` (three cards side by side) is kept as a saved alternative, viewable at `/?design=1`. Default is chosen in `app/src/main.tsx`.
+- Quote form: `app/src/QuoteForm.tsx`; same `bookings` insert as before (plain REST call in `app/src/supabase.ts`, no supabase-js). Confirmation mascot is the original SVG, stored verbatim in `app/src/assets/mascot-confirmed.svg`.
+- Theme: brand colors/fonts live in the Astryx theme `upshine` — change it with `npx astryx experimental theme editor set upshine …` (settings in `app/themes/upshine/`), never by hand-editing `app/src/themes/`.
+- Local preview: `cd app && npm run build && npx vite preview` → http://localhost:4173/
+- Content changes shipped with the redesign: phone is now **(352) 271-2888**; middle package renamed **"UpShine Deluxe Detail"** (was "Elevated UpShine") and listed first, then Interior Detail, then Premium Care Service; wax line reads "Hybrid ceramic or classic machine wax".
+- `bookings-ics` duration map was deliberately NOT updated for the new package name — owner does one full detail (~6 h) per day and said not to worry about durations.
+
 ## What this project is
 
 Static HTML site for UpShine Detailing mobile detailing. No build system. Files are plain `.html` using a custom "Design Components" (DC) React runtime via `support.js`. Deployed on Netlify — currently `elevatedshinedetail.com` is still the Netlify primary domain, but all in-page canonical/OG URLs now point at `upshinedetail.com`.
@@ -127,3 +138,18 @@ Supabase project ID: `hhdrqgkhpfmbujlnhtlm`
 - Customers can now drop cars off at **1801 NE 23rd Ave, Unit B-9, Gainesville, FL 32609** (verified as NE 23rd *Ave* via county parcel record).
 - Low-key placement only, no banner: one line under the Service area blurb (`#a-area`) and a "Drop-off" column in the footer. Both link to Google Maps.
 - No form/schema change: drop-off customers type "drop-off" in the required "Where's the car?" field (copy tells them to).
+
+## Tier 1 → interior-only (2026-09-02)
+- **Express Shine ($120, wash + light interior) replaced by "Interior Detail" ($120, interior only).** No exterior work in tier 1.
+- Interior Detail includes: full vacuum (seats/carpets/trunk), seats & carpets shampooed + steam cleaned, dash/console/vents/door panels, floor mats shampooed, leather & vinyl conditioned, door jambs, interior windows. Icon 🚿 → 🧽.
+- **Elevated UpShine ($199) absorbed the exterior items** — list now reads "Everything in Interior Detail, plus: hand wash & dry, exterior windows, machine wax, bug removal, UV trim protection, wheel deep-clean & polish, tires cleaned & dressed." The interior lines it used to duplicate moved down into tier 1.
+- BookingForm dropdown option value `Express Shine` → `Interior Detail` (inserts into `bookings.service`, no check constraint).
+- Shipped as commit 62d89af (files uploaded via GitHub web UI from mobile).
+- TODO: `bookings-ics` duration map still keys on old tier names — add "Interior Detail" alongside legacy "Express Shine".
+
+## Netlify credits gotcha (2026-09-02)
+- Deploy of 62d89af was **Skipped: "account credit usage exceeded"**. Not a repo/webhook problem — GitHub → Netlify link works fine.
+- Free plan = 300 credits per billing cycle (cycle runs the 5th to the 4th). Cycle Aug 5–Sep 4 consumed **313**: AI inference **247.1** (986K OpenAI tokens via Netlify Agent Runners / AI Gateway), bandwidth 23, compute 16.3, production deploys 15 (1 deploy), web requests 11.5.
+- The "24.5 / 30 credits remaining" shown on the billing page are **operational credits** — they keep published sites online and CANNOT be spent on production deploys or Agent Runners. Misleading; ignore that number when deploys are paused.
+- Deploys resume automatically at the next cycle (Sep 4) — then hit Trigger deploy, since the skipped build is not retried on its own.
+- Watch the Agent Runners: one ran Aug 5 (`agent-upshinedetailcom-website-d692`, netlify-coding[bot]). AI inference is what actually blew the budget, not builds.

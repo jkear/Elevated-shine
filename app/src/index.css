@@ -12,4 +12,4 @@
   * { animation: none !important; }
 }
 html { scroll-behavior: smooth; }
-[id^='a-'] { scroll-margin-top: var(--spacing-10); }
+[id^='a-'] { scroll-margin-top: calc(var(--spacing-10) * 2); }

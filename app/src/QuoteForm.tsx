@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {VStack} from '@astryxdesign/core/VStack';
 import {HStack} from '@astryxdesign/core/HStack';
 import {Grid, GridSpan} from '@astryxdesign/core/Grid';
@@ -74,7 +74,14 @@ function validate(d: Data): Errors {
 
 const err = (message?: string) => (message ? ({type: 'error', message} as const) : undefined);
 
-export default function QuoteForm({frameId}: {frameId: string}) {
+export default function QuoteForm({
+  frameId,
+  presetService,
+}: {
+  frameId: string;
+  /** A package picked elsewhere on the page; fills the package field without touching the rest. */
+  presetService?: string;
+}) {
   const [data, setData] = useState<Data>(blankData);
   const [errors, setErrors] = useState<Errors>({});
   const [confirmed, setConfirmed] = useState<Data | null>(null);
@@ -84,6 +91,13 @@ export default function QuoteForm({frameId}: {frameId: string}) {
     setData(d => ({...d, [field]: value}));
     setErrors(e => ({...e, [field]: undefined}));
   };
+
+  useEffect(() => {
+    if (presetService) {
+      setData(d => ({...d, service: presetService}));
+      setErrors(e => ({...e, service: undefined}));
+    }
+  }, [presetService]);
 
   const submit = async () => {
     const e = validate(data);
