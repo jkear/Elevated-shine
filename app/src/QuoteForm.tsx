@@ -14,7 +14,9 @@ import {Selector} from '@astryxdesign/core/Selector';
 import {DateInput} from '@astryxdesign/core/DateInput';
 import type {ComponentProps} from 'react';
 import {CheckboxList, CheckboxListItem} from '@astryxdesign/core/CheckboxList';
+import {FileInput} from '@astryxdesign/core/FileInput';
 import {insertBooking} from './supabase';
+import {MAX_PHOTOS, preparePhotos, submitQuoteForm} from './netlifyForm';
 import {FORM_ADDONS, PACKAGES} from './content';
 import mascotSvg from './assets/mascot-confirmed.svg?raw';
 
@@ -33,6 +35,7 @@ type Data = {
 };
 type ISODate = NonNullable<ComponentProps<typeof DateInput>['value']>;
 type Errors = Partial<Record<keyof Data, string>>;
+type Confirmed = Data & {photoCount: number};
 
 const NO_TIME_PREF = 'none';
 
@@ -84,7 +87,8 @@ export default function QuoteForm({
 }) {
   const [data, setData] = useState<Data>(blankData);
   const [errors, setErrors] = useState<Errors>({});
-  const [confirmed, setConfirmed] = useState<Data | null>(null);
+  const [photos, setPhotos] = useState<File[]>([]);
+  const [confirmed, setConfirmed] = useState<Confirmed | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const set = <K extends keyof Data>(field: K, value: Data[K]) => {
@@ -109,8 +113,33 @@ export default function QuoteForm({
     const timePref = data.timePref === NO_TIME_PREF ? '' : data.timePref;
     // Same order as the list on screen, regardless of the order they were ticked.
     const addons = FORM_ADDONS.filter(a => data.addons.includes(a));
-    // Record the quote request (the insert fires the owner notification email).
-    const error = await insertBooking({
+    const upload = await preparePhotos(photos);
+    if (!upload) {
+      setSubmitError('Those photos are too large to send. Try fewer or smaller ones.');
+      return;
+    }
+    // Netlify Forms is the main record: it keeps the photos and emails the owner.
+    const sentToNetlify = await submitQuoteForm(
+      {
+        name: `${data.firstName.trim()} ${data.lastName.trim()}`,
+        phone: data.phone,
+        email: data.email,
+        address: data.address,
+        package: data.service,
+        vehicle: data.vehicle,
+        'preferred-day': data.date,
+        'preferred-time': timePref || 'No preference',
+        'add-ons': addons.join(', '),
+        notes: data.notes,
+      },
+      upload,
+    );
+    const photoCount = sentToNetlify ? upload.length : 0;
+    const photoNote = photoCount
+      ? `${photoCount} photo${photoCount > 1 ? 's' : ''} attached to the website form submission.`
+      : '';
+    // The same request is copied to the Supabase `bookings` table as a backup.
+    const backupError = await insertBooking({
       first_name: data.firstName,
       last_name: data.lastName,
       email: data.email,
@@ -121,22 +150,24 @@ export default function QuoteForm({
       vehicle: data.vehicle,
       date: data.date,
       time_slot: timePref || null,
-      notes: data.notes || null,
+      notes: [data.notes, photoNote].filter(Boolean).join('\n') || null,
       mode: 'guest',
       user_id: null,
       frame_id: frameId || null,
     });
-    if (error) {
-      setSubmitError(error);
+    // One copy landing is enough to follow up; only fail when neither did.
+    if (!sentToNetlify && backupError) {
+      setSubmitError(backupError);
       return;
     }
-    setConfirmed({...data, timePref});
+    setConfirmed({...data, timePref, photoCount});
     // The confirmation is much shorter than the form; bring it back into view.
     document.getElementById('a-book')?.scrollIntoView({block: 'start'});
   };
 
   const reset = () => {
     setData(blankData());
+    setPhotos([]);
     setErrors({});
     setConfirmed(null);
     setSubmitError(null);
@@ -175,6 +206,17 @@ export default function QuoteForm({
                 {confirmed.timePref ? ` · ${confirmed.timePref}` : ''}
               </Text>
             </HStack>
+            {confirmed.photoCount > 0 && (
+              <>
+                <Divider />
+                <HStack justify="between" gap={4}>
+                  <Text type="supporting">Photos</Text>
+                  <Text type="label" justify="end">
+                    {confirmed.photoCount} attached
+                  </Text>
+                </HStack>
+              </>
+            )}
           </VStack>
         </Card>
         <Button label="Request another quote" variant="ghost" onClick={reset} />
@@ -280,6 +322,20 @@ export default function QuoteForm({
           <CheckboxListItem key={a} value={a} label={a} />
         ))}
       </CheckboxList>
+
+      <FileInput
+        label="Photos of your car"
+        description={`Up to ${MAX_PHOTOS} photos. They help us quote accurately.`}
+        isOptional
+        isMultiple
+        mode="dropzone"
+        accept="image/*"
+        maxFiles={MAX_PHOTOS}
+        maxSize={25 * 1024 * 1024}
+        placeholder="Add photos"
+        value={photos}
+        onChange={files => setPhotos(Array.isArray(files) ? files : files ? [files] : [])}
+      />
 
       <TextArea
         label="Anything we should know?"

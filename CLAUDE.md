@@ -17,6 +17,14 @@
 - Content changes shipped with the redesign: phone is now **(352) 271-2888**; middle package renamed **"UpShine Deluxe Detail"** (was "Elevated UpShine") and listed first, then Interior Detail, then Premium Care Service; wax line reads "Hybrid ceramic or classic machine wax".
 - `bookings-ics` duration map was deliberately NOT updated for the new package name — owner does one full detail (~6 h) per day and said not to worry about durations.
 
+## Quote form → Netlify Forms + car photos (2026-11-15, branch `quote-photos`, PR #2)
+- **Owner's intent: Netlify is the system of record; Supabase is only a backup copy of the customer list.** Before this change nothing ran on Netlify — the form only inserted into Supabase, and the Supabase `booking-notify` function sent the email.
+- The form now posts multipart to **Netlify Forms** first (form name `quote`, registered by `app/public/__forms.html`; client code in `app/src/netlifyForm.ts`), then copies the same request into Supabase `bookings`. The customer sees an error only if both fail.
+- **Field names in `__forms.html` and `netlifyForm.ts` must match exactly**, or Netlify silently drops the submission. Adding a form field means editing both.
+- Photos: optional, up to 3 (`photo-1..3`, one file per field is a Netlify rule), shrunk in the browser to ≤1600px JPEG because Netlify caps a request at 8 MB. Photos live only in Netlify; the Supabase row just gets a "N photos attached" line in `notes`.
+- **Netlify email notification is NOT set up yet** — it has to be added in the Netlify UI (Forms → Submission notifications) and the recipient must be a member of the Netlify team. Until then the Supabase `booking-notify` email is still the only alert. Once Netlify's email is confirmed, drop `booking_notify_trigger` to avoid double emails.
+- Netlify Forms can't be tested on localhost; use the PR deploy preview. Test submissions with the word "test" tend to land in the Spam tab (Akismet).
+
 ## What this project is
 
 Static HTML site for UpShine Detailing mobile detailing. No build system. Files are plain `.html` using a custom "Design Components" (DC) React runtime via `support.js`. Deployed on Netlify — currently `elevatedshinedetail.com` is still the Netlify primary domain, but all in-page canonical/OG URLs now point at `upshinedetail.com`.

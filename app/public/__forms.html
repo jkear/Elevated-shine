@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>UpShine Detailing form definitions</title>
+  </head>
+  <body>
+    <!--
+      Netlify reads this file at deploy time to register the quote form.
+      The real form is rendered by React (src/QuoteForm.tsx) and posts here.
+      Field names must match src/netlifyForm.ts exactly.
+    -->
+    <form name="quote" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="quote" />
+      <input type="hidden" name="subject" value="New quote request - UpShine Detailing (%{submissionId})" />
+      <input type="text" name="name" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <input type="text" name="address" />
+      <input type="text" name="package" />
+      <input type="text" name="vehicle" />
+      <input type="text" name="preferred-day" />
+      <input type="text" name="preferred-time" />
+      <input type="text" name="add-ons" />
+      <textarea name="notes"></textarea>
+      <input type="file" name="photo-1" />
+      <input type="file" name="photo-2" />
+      <input type="file" name="photo-3" />
+      <input name="bot-field" />
+    </form>
+  </body>
+</html>
